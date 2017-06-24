@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Grid, Container } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import {
   Header,
-  SearchBar,
 } from '../components';
+import SearchContainer from './SearchContainer';
+
 class App extends Component {
   render() {
     return (
@@ -12,9 +13,7 @@ class App extends Component {
           <Header />
         </Grid.Row>
         <Grid.Row centered>
-          <Container>
-            <SearchBar />
-          </Container>
+          <SearchContainer />
         </Grid.Row>
       </Grid>
     );
