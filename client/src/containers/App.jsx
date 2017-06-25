@@ -12,7 +12,7 @@ class App extends Component {
         <Grid.Row>
           <Header />
         </Grid.Row>
-        <Grid.Row centered>
+        <Grid.Row>
           <SearchContainer />
         </Grid.Row>
       </Grid>

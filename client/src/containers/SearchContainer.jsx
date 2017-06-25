@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react'
 import {
   SearchBar,
+  SearchList,
 } from '../components';
 
 class SearchContainer extends Component {
@@ -9,6 +10,7 @@ class SearchContainer extends Component {
     return (
       <Container>
         <SearchBar />
+        <SearchList />
       </Container>
     );
   }
