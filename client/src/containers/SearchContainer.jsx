@@ -67,6 +67,6 @@ class SearchContainer extends Component {
       </Container>
     );
   }
-}
+};
 
 export default SearchContainer;
