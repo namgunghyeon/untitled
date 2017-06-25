@@ -8,7 +8,7 @@ import {
 
 function SearchList(props) {
   return (
-    <Grid>
+    <Grid columns={1}>
       <Grid.Row
         style={{
           paddingTop: '2rem',

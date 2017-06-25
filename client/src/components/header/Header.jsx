@@ -9,6 +9,7 @@ function Header(props) {
           inverted
           fixed="top"
           color="blue"
+          size="massive"
           >
           </Menu>
         </Grid.Column>

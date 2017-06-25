@@ -10,14 +10,18 @@ const options = [
 function SearchBar(props) {
   return (
     <Grid columns={1}>
-      <Grid.Row>
+      <Grid.Row
+        style={{
+          paddingTop: '2rem',
+        }}
+      >
         <Grid.Column>
           <Input
             fluid
             action
             type='text'
             placeholder='Search...'
-            size="massive"
+            size="huge"
           >
             <input />
             <Select
