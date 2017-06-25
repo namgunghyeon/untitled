@@ -4,6 +4,10 @@ import {
   List,
   Header,
   Divider,
+  Button,
+  Icon,
+  Segment,
+  Label,
 } from 'semantic-ui-react';
 
 function SearchDetail(props) {
@@ -15,6 +19,27 @@ function SearchDetail(props) {
         }}
       >
         <Grid.Column>
+          <Button
+            primary
+            onClick={props.onBack}
+          >
+          <Icon name="triangle left" />
+          Back
+          </Button>
+          <Segment>
+          <List.Item>
+            <Label
+              color='purple'
+              horizontal
+            >
+              Function
+            </Label>
+            getName
+          </List.Item>
+          </Segment>
+          <Segment>
+            Contents
+          </Segment>
         </Grid.Column>
       </Grid.Row>
     </Grid>

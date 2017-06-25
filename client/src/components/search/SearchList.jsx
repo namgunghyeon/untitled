@@ -7,6 +7,9 @@ import {
 } from 'semantic-ui-react';
 
 function SearchList(props) {
+  const onClickItem = () => {
+    props.onClickItem(true);
+  };
   return (
     <Grid columns={1}>
       <Grid.Row
@@ -22,7 +25,9 @@ function SearchList(props) {
           relaxed
           size="huge"
         >
-          <List.Item>
+          <List.Item
+            onClick={onClickItem}
+          >
             <List.Content>
               <List.Header>getName</List.Header>
               <List.Description>server/Connection/Ping.py</List.Description>
