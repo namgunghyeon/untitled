@@ -2,10 +2,14 @@ import React from 'react';
 import {
   Grid,
   Menu,
-  Icon
+  Icon,
 } from 'semantic-ui-react';
 
 function Header(props) {
+  const onSettingToggle = () => {
+    props.onSettingToggle(!props.open);
+    console.log(props.open);
+  }
   return (
     <Grid columns={1}>
       <Grid.Row>
@@ -17,7 +21,9 @@ function Header(props) {
           color="blue"
           size="massive"
           >
-          <Menu.Item>
+          <Menu.Item
+            onClick={onSettingToggle}
+          >
             <Icon name="settings"></Icon>
           </Menu.Item>
           </Menu>

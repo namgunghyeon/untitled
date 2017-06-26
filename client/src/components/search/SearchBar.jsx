@@ -21,11 +21,11 @@ function SearchBar(props) {
             action
             type='text'
             placeholder='Search...'
-            size="huge"
+            size="large"
           >
             <input />
             <Select
-              style={{ width: '12rem' }}
+              style={{ width: '8rem' }}
               compact
               options={options}
               defaultValue='Variable'

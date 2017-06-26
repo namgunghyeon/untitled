@@ -18,41 +18,32 @@ function SearchList(props) {
         }}
       >
         <Grid.Column>
-        <Header as='h2'>Function</Header>
-        <Divider />
-        <List
-          divided
-          relaxed
-          size="huge"
-        >
-          <List.Item
-            onClick={onClickItem}
+          <Header as='h2'>Function</Header>
+          <Divider />
+          <List
+            divided
+            relaxed
+            size="huge"
           >
-            <List.Content>
-              <List.Header>getName</List.Header>
-              <List.Description>server/Connection/Ping.py</List.Description>
-            </List.Content>
-          </List.Item>
-          <List.Item>
-            <List.Content>
-              <List.Header>getName</List.Header>
-              <List.Description>
-                server/Api/google.py
-              </List.Description>
-            </List.Content>
-          </List.Item>
-          <List.Item>
-            <List.Content>
-              <List.Header>getName</List.Header>
-              <List.Description>server/Api/Facebook.py</List.Description>
-            </List.Content>
-          </List.Item>
-          <List.Item>
-            <List.Content>
-              <List.Header>getName</List.Header>
-              <List.Description>server/Api/Kakao.py</List.Description>
-            </List.Content>
-          </List.Item>
+            {
+              props.items.map(item => {
+                return (
+                  <List.Item
+                    key={item.id}
+                    onClick={onClickItem}
+                    style={{
+                      paddingTop: '1rem',
+                      paddingBottom: '1rem',
+                    }}
+                  >
+                    <List.Content>
+                      <List.Header>{item.name}</List.Header>
+                      <List.Description>{item.location}</List.Description>
+                    </List.Content>
+                  </List.Item>
+                )
+              })
+            }
           </List>
         </Grid.Column>
       </Grid.Row>
