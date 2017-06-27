@@ -6,7 +6,6 @@ import HeaderContainer from './HeaderContainer';
 class App extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
   }
   render() {
     return (

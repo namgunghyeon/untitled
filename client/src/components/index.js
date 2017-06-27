@@ -3,6 +3,7 @@ import SearchBar from './search/SearchBar';
 import SearchList from './search/SearchList';
 import SearchDetail from './search/SearchDetail';
 import SettingHeader from './setting/SettingHeader';
+import SettingContents from './setting/SettingContents';
 
 export {
   Header,
@@ -10,4 +11,5 @@ export {
   SearchList,
   SettingHeader,
   SearchDetail,
+  SettingContents,
 };

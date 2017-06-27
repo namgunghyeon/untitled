@@ -1,5 +1,8 @@
 import React from 'react';
-import { Input, Grid, Button, Select } from 'semantic-ui-react'
+import {
+  Grid,
+  Header,
+} from 'semantic-ui-react';
 
 function SettingHeader(props) {
   return (
@@ -10,7 +13,7 @@ function SettingHeader(props) {
         }}
       >
         <Grid.Column>
-          <div>SettingHeader</div>
+          <Header as='h1'>Setting</Header>
         </Grid.Column>
       </Grid.Row>
     </Grid>
