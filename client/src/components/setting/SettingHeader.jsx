@@ -10,6 +10,7 @@ function SettingHeader(props) {
         }}
       >
         <Grid.Column>
+          <div>SettingHeader</div>
         </Grid.Column>
       </Grid.Row>
     </Grid>
