@@ -1,10 +1,7 @@
 import React from 'react';
 import {
   Grid,
-  Header,
   Segment,
-  Button,
-  Image,
   List,
   Dropdown,
 } from 'semantic-ui-react';

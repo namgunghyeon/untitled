@@ -3,13 +3,11 @@ import {
   Grid,
   List,
   Header,
-  Divider,
   Button,
   Icon,
   Segment,
   Label,
   Table,
-  Image,
 } from 'semantic-ui-react';
 
 function SearchDetail(props) {

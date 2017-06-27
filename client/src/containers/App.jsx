@@ -1,12 +1,8 @@
 import React, { Component, cloneElement } from 'react';
 import { Grid } from 'semantic-ui-react';
-import SearchContainer from './SearchContainer';
 import HeaderContainer from './HeaderContainer';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <Grid>
