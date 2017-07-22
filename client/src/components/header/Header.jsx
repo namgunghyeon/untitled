@@ -4,6 +4,7 @@ import {
   Menu,
   Icon,
 } from 'semantic-ui-react';
+import { Link } from 'react-router'
 
 function Header(props) {
   const onSettingToggle = () => {
@@ -25,6 +26,7 @@ function Header(props) {
             onClick={onSettingToggle}
           >
             <Icon name="settings"></Icon>
+            <Link to="settings">Settings</Link>
           </Menu.Item>
           </Menu>
         </Grid.Column>

@@ -15,7 +15,7 @@ function Root({ store, history }) {
             component={SearchContainer}
           />
           <Route
-            path='/setting'
+            path='/settings'
             component={SettingContainer}
           />
         </Route>

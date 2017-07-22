@@ -13,7 +13,7 @@ function SettingHeader(props) {
         }}
       >
         <Grid.Column>
-          <Header as='h1'>Setting</Header>
+          <Header as='h1'>Settings</Header>
         </Grid.Column>
       </Grid.Row>
     </Grid>
