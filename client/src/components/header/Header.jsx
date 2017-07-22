@@ -9,7 +9,6 @@ import { Link } from 'react-router'
 function Header(props) {
   const onSettingToggle = () => {
     props.onSettingToggle(!props.open);
-    console.log(props.open);
   }
   return (
     <Grid columns={1}>
@@ -25,8 +24,10 @@ function Header(props) {
           <Menu.Item
             onClick={onSettingToggle}
           >
-            <Icon name="settings"></Icon>
+            <Icon name="settings">
+            </Icon>
             <Link to="settings">Settings</Link>
+
           </Menu.Item>
           </Menu>
         </Grid.Column>

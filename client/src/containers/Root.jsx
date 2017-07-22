@@ -3,13 +3,14 @@ import App from './App';
 import SettingContainer from './SettingContainer';
 import SearchContainer from './SearchContainer';
 import { Provider } from 'react-redux';
-import { Router, Route } from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 
 function Root({ store, history }) {
   return (
     <Provider store={store}>
       <Router history={history}>
         <Route path='/' component={App}>
+          <IndexRoute component = {SearchContainer} />
           <Route
             path='/main'
             component={SearchContainer}
