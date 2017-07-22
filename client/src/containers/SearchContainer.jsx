@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {
   SearchBar,
   SearchList,
@@ -99,8 +100,18 @@ class SearchContainer extends Component {
   }
 };
 
+function mapStateToProps(state) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    ...SearchActions,
+  }, dispatch);
+}
+
+
 export default connect(
   null,
-  { ...SearchActions }
+  mapDispatchToProps,
 )(SearchContainer);
-//export default SearchContainer;
