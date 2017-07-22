@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import { Container } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import {
   SearchBar,
   SearchList,
   SearchDetail,
 } from '../components';
 
+import {
+  SearchActions,
+} from '../data/search';
+console.log('SearchActions', SearchActions);
 const items = [{
   id: 1,
   name: 'getName',
@@ -56,6 +61,8 @@ class SearchContainer extends Component {
       ...this.state,
       isItemClicked: false,
     });
+    console.log('serach');
+    this.props.searchKeywords('namgunghyeon');
   }
   renderBar() {
     return (<SearchBar />);
@@ -92,4 +99,8 @@ class SearchContainer extends Component {
   }
 };
 
-export default SearchContainer;
+export default connect(
+  null,
+  { ...SearchActions }
+)(SearchContainer);
+//export default SearchContainer;
