@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import * as ActionTypes from './actionTypes';
 import { receiveKeywords } from './actions';
 
-export default function searchKeywords(action$) {
+export function searchKeywords(action$) {
   return action$.ofType(ActionTypes.SEARCHED_KEWORDS)
     .map(action => action.payload.query)
     .filter(q => !!q)
