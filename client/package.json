@@ -44,5 +44,7 @@
     "eject": "react-scripts eject",
     "eslint-client": "node_modules/.bin/eslint ."
   },
-  "pre-commit": ["eslint-client"]
+  "pre-commit": {
+    "runt": ["eslint-client"]
+  }
 }
