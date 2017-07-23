@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input, Grid, Button, Select } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 const options = [
   { key: 'Variable', text: 'Variable', value: 'Variable' },
@@ -7,7 +8,11 @@ const options = [
   { key: 'File', text: 'File', value: 'File' },
 ];
 
-function SearchBar() {
+const propTypes = {
+  onHandelSearch: PropTypes.func.isRequired,
+};
+
+function SearchBar(props) {
   return (
     <Grid columns={1}>
       <Grid.Row
@@ -22,6 +27,7 @@ function SearchBar() {
             type="text"
             placeholder="Search..."
             size="large"
+            onChange={props.onHandelSearch}
           >
             <input />
             <Select
@@ -41,4 +47,5 @@ function SearchBar() {
     </Grid>
   );
 }
+SearchBar.propTypes = propTypes;
 export default SearchBar;

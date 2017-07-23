@@ -39,20 +39,19 @@ const propTypes = {
 };
 
 class SearchContainer extends Component {
-  static renderBar() {
-    return (<SearchBar />);
-  }
   constructor(props) {
     super(props);
     this.state = {
       isSettingClicked: false,
       isItemClicked: false,
     };
+    this.renderBar = this.renderBar.bind(this);
     this.renderDetailView = this.renderDetailView.bind(this);
     this.renderListView = this.renderListView.bind(this);
 
     this.onClickItem = this.onClickItem.bind(this);
     this.onClickBack = this.onClickBack.bind(this);
+    this.onHandelSaerch = this.onHandelSaerch.bind(this);
   }
   onClickItem(status) {
     this.setState({
@@ -65,7 +64,17 @@ class SearchContainer extends Component {
       ...this.state,
       isItemClicked: false,
     });
-    this.props.searchKeywords('namgunghyeon');
+  }
+  onHandelSaerch(e, data) {
+    const keyword = data.value;
+    this.props.searchKeywords(keyword);
+  }
+  renderBar() {
+    return (
+      <SearchBar
+        onHandelSearch={this.onHandelSaerch}
+      />
+    );
   }
   renderListView(isItemClicked) {
     return (
@@ -91,7 +100,7 @@ class SearchContainer extends Component {
   render() {
     return (
       <Container>
-        { SearchContainer.renderBar() }
+        { this.renderBar() }
         { this.renderListView(this.state.isItemClicked) }
         { this.renderDetailView(this.state.isItemClicked) }
       </Container>

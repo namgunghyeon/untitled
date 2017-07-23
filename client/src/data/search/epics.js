@@ -5,13 +5,13 @@ import { receiveKeywords } from './actions';
 
 export function searchKeywords(action$) {
   return action$.ofType(ActionTypes.SEARCHED_KEWORDS)
-    .map(action => action.payload.query)
-    .filter(q => !!q)
-    .switchMap(q =>
-      Observable.timer(800)
+    .map(action => action.payload.keyword)
+    .filter(keyword => !!keyword)
+    .switchMap(keyword =>
+      Observable.timer(10)
         .takeUntil(action$.ofType(ActionTypes.CLEARED_SEARCH_RESULTS))
         .mergeMap(() => Observable.merge(
-          ajax.getJSON(`https://api.github.com/search/users?q=${q}`)
+          ajax.getJSON(`https://api.github.com/search/users?q=${keyword}`)
             .map(res => res.items)
             .map(receiveKeywords),
         )),

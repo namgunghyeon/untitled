@@ -1,11 +1,11 @@
 import * as ActionTypes from './actionTypes';
 
 
-export function searchKeywords(query) {
+export function searchKeywords(keyword) {
   return {
     type: ActionTypes.SEARCHED_KEWORDS,
     payload: {
-      query,
+      keyword,
     },
   };
 }
@@ -20,6 +20,7 @@ export function receiveKeywords(query) {
 }
 
 export function clearSearchResults() {
+  console.log('teststset');
   return {
     type: ActionTypes.CLEARED_SEARCH_RESULTS,
   };
