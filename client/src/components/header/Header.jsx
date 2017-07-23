@@ -4,31 +4,30 @@ import {
   Menu,
   Icon,
 } from 'semantic-ui-react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 function Header(props) {
   const onSettingToggle = () => {
     props.onSettingToggle(!props.open);
-  }
+  };
   return (
     <Grid columns={1}>
       <Grid.Row>
         <Grid.Column>
           <Menu
-          stackable
-          inverted
-          fixed="top"
-          color="blue"
-          size="massive"
+            stackable
+            inverted
+            fixed="top"
+            color="blue"
+            size="massive"
           >
-          <Menu.Item
-            onClick={onSettingToggle}
-          >
-            <Icon name="settings">
-            </Icon>
-            <Link to="settings">Settings</Link>
+            <Menu.Item
+              onClick={onSettingToggle}
+            >
+              <Icon name="settings" />
+              <Link to="settings">Settings</Link>
 
-          </Menu.Item>
+            </Menu.Item>
           </Menu>
         </Grid.Column>
       </Grid.Row>

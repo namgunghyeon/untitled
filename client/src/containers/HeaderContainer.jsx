@@ -30,7 +30,7 @@ class HeaderContainer extends Component {
         />
       </div>
     );
-  };
-};
+  }
+}
 
 export default HeaderContainer;

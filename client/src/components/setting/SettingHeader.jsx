@@ -4,7 +4,7 @@ import {
   Header,
 } from 'semantic-ui-react';
 
-function SettingHeader(props) {
+function SettingHeader() {
   return (
     <Grid columns={1}>
       <Grid.Row
@@ -13,7 +13,7 @@ function SettingHeader(props) {
         }}
       >
         <Grid.Column>
-          <Header as='h1'>Settings</Header>
+          <Header as="h1">Settings</Header>
         </Grid.Column>
       </Grid.Row>
     </Grid>

@@ -18,7 +18,7 @@ function SearchList(props) {
         }}
       >
         <Grid.Column>
-          <Header as='h2'>Function</Header>
+          <Header as="h2">Function</Header>
           <Divider />
           <List
             divided
@@ -26,7 +26,7 @@ function SearchList(props) {
             size="huge"
           >
             {
-              props.items.map(item => {
+              props.items.map((item) => {
                 return (
                   <List.Item
                     key={item.id}
@@ -41,7 +41,7 @@ function SearchList(props) {
                       <List.Description>{item.location}</List.Description>
                     </List.Content>
                   </List.Item>
-                )
+                );
               })
             }
           </List>

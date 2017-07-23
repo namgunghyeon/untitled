@@ -13,27 +13,27 @@ import {
 function SearchDetail(props) {
   return (
     <Grid columns={1}>
-    <Grid.Row
-      style={{
-        paddingTop: '2rem',
-      }}
-    >
-      <Grid.Column>
-        <Button
-          primary
-          onClick={props.onBack}
-        >
-        <Icon name="triangle left" />
-        Back
-        </Button>
-      </Grid.Column>
-    </Grid.Row>
+      <Grid.Row
+        style={{
+          paddingTop: '2rem',
+        }}
+      >
+        <Grid.Column>
+          <Button
+            primary
+            onClick={props.onBack}
+          >
+            <Icon name="triangle left" />
+          Back
+          </Button>
+        </Grid.Column>
+      </Grid.Row>
       <Grid.Row>
         <Grid.Column>
           <Segment>
             <List.Item>
               <Label
-                color='purple'
+                color="purple"
                 horizontal
               >
                 Function
@@ -46,7 +46,7 @@ function SearchDetail(props) {
       <Grid.Row>
         <Grid.Column>
           <Segment>
-            <Table basic='very' celled>
+            <Table basic="very" celled>
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>Title</Table.HeaderCell>
@@ -56,7 +56,7 @@ function SearchDetail(props) {
               <Table.Body>
                 <Table.Row>
                   <Table.Cell collapsing>
-                    <Header as='h5'>
+                    <Header as="h5">
                       <Header.Content>
                         Location
                       </Header.Content>
@@ -68,7 +68,7 @@ function SearchDetail(props) {
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell>
-                    <Header as='h5'>
+                    <Header as="h5">
                       <Header.Content>
                         Frequency
                       </Header.Content>

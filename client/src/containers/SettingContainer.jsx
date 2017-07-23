@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react';
 import {
   SettingHeader,
   SettingContents,
@@ -12,7 +12,7 @@ class SettingContainer extends Component {
         <SettingHeader />
         <SettingContents />
       </Container>
-    )
+    );
   }
 }
 

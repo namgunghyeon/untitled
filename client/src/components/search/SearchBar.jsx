@@ -1,13 +1,13 @@
 import React from 'react';
-import { Input, Grid, Button, Select } from 'semantic-ui-react'
+import { Input, Grid, Button, Select } from 'semantic-ui-react';
 
 const options = [
   { key: 'Variable', text: 'Variable', value: 'Variable' },
   { key: 'Function', text: 'Function', value: 'Function' },
   { key: 'File', text: 'File', value: 'File' },
-]
+];
 
-function SearchBar(props) {
+function SearchBar() {
   return (
     <Grid columns={1}>
       <Grid.Row
@@ -19,8 +19,8 @@ function SearchBar(props) {
           <Input
             fluid
             action
-            type='text'
-            placeholder='Search...'
+            type="text"
+            placeholder="Search..."
             size="large"
           >
             <input />
@@ -28,10 +28,10 @@ function SearchBar(props) {
               style={{ width: '8rem' }}
               compact
               options={options}
-              defaultValue='Variable'
+              defaultValue="Variable"
             />
             <Button
-              type='submit'
+              type="submit"
             >
               Search
             </Button>

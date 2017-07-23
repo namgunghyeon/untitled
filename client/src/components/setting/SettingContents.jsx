@@ -18,23 +18,23 @@ const versionOptions = [
   { key: '1.1.0', text: '1.1.0', value: '1.1.0' },
 ];
 
-function SettingContents(props) {
+function SettingContents() {
   return (
     <Grid columns={1}>
       <Grid.Row>
         <Grid.Column>
           <Segment>
-            <List divided verticalAlign='middle'>
+            <List divided verticalAlign="middle">
               <List.Item
                 style={{
                   paddingTop: '1rem',
                   paddingBottom: '1rem',
                 }}
               >
-                <List.Content floated='right'>
+                <List.Content floated="right">
                   <Dropdown
                     options={openSourceOptions}
-                    placeholder='Choose open source'
+                    placeholder="Choose open source"
                     search
                     selection
                     fluid
@@ -54,10 +54,10 @@ function SettingContents(props) {
                   paddingBottom: '1rem',
                 }}
               >
-                <List.Content floated='right'>
+                <List.Content floated="right">
                   <Dropdown
                     options={versionOptions}
-                    placeholder='Choose version'
+                    placeholder="Choose version"
                     search
                     selection
                     fluid

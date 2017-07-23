@@ -31,7 +31,7 @@ const items = [{
   id: 5,
   name: 'getName',
   location: 'server/Api/Naver.py',
-}]
+}];
 
 class SearchContainer extends Component {
   constructor(props) {
@@ -47,9 +47,6 @@ class SearchContainer extends Component {
     this.onClickItem = this.onClickItem.bind(this);
     this.onClickBack = this.onClickBack.bind(this);
   }
-  onClickSetting() {
-
-  }
   onClickItem(status) {
     this.setState({
       ...this.state,
@@ -61,7 +58,6 @@ class SearchContainer extends Component {
       ...this.state,
       isItemClicked: false,
     });
-    console.log('serach');
     this.props.searchKeywords('namgunghyeon');
   }
   renderBar() {
@@ -97,7 +93,7 @@ class SearchContainer extends Component {
       </Container>
     );
   }
-};
+}
 
 function mapStateToProps(state) {
   return {};
@@ -110,4 +106,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(SearchContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);
