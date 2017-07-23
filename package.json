@@ -8,22 +8,27 @@
     "babel-preset-latest": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.17.2",
+    "eslint": "^4.3.0",
     "express": "^4.15.3",
     "express-mysql-session": "^1.2.1",
     "express-session": "^1.15.4"
   },
   "devDependencies": {
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.7.0",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2"
   },
   "scripts": {
     "eslint-client": "cd client && node_modules/.bin/eslint .",
+    "eslint-server": "node_modules/.bin/eslint server",
     "babel-node": "node_modules/.bin/babel-node",
     "server": "node_modules/.bin/nodemon --exec npm run babel-node -- server/app.js"
   },
   "pre-commit": {
     "run": [
-      "eslint-client"
+      "eslint-client",
+      "eslint-server"
     ]
   }
 }
