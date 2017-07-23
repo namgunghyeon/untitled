@@ -1,6 +1,12 @@
 import React, { Component, cloneElement } from 'react';
 import { Grid } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import HeaderContainer from './HeaderContainer';
+
+
+const propTypes = {
+  children: PropTypes.object.isRequired,
+};
 
 class App extends Component {
   render() {
@@ -18,4 +24,5 @@ class App extends Component {
     );
   }
 }
-export default App
+App.propTypes = propTypes;
+export default App;
