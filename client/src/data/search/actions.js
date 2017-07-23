@@ -12,7 +12,7 @@ export function searchKeywords(query) {
 
 export function receiveKeywords(query) {
   return {
-    type: ActionTypes.TEST,
+    type: ActionTypes.RECEIVED_KEWORDS,
     payload: {
       query
     }

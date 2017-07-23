@@ -1,3 +1,3 @@
-export const TEST = 'search/TEST';
+export const RECEIVED_KEWORDS = 'search/RECEIVED_KEWORDS';
 export const SEARCHED_KEWORDS = 'search/SEARCHED_KEWORDS';
 export const CLEARED_SEARCH_RESULTS = 'test/CLEARED_SEARCH_RESULTS';
