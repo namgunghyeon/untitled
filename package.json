@@ -2,13 +2,24 @@
   "name": "study",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-mysql-session": "^1.2.1",
+    "express-session": "^1.15.4"
+  },
   "devDependencies": {
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2"
   },
   "scripts": {
-    "eslint-client": "cd client && node_modules/.bin/eslint ."
+    "eslint-client": "cd client && node_modules/.bin/eslint .",
+    "babel-node": "node_modules/.bin/babel-node",
+    "server": "node_modules/.bin/nodemon --exec npm run babel-node -- server/app.js"
   },
   "pre-commit": {
     "run": [
