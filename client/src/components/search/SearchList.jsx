@@ -5,7 +5,11 @@ import {
   Header,
   Divider,
 } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
+const propTypes = {
+  items: PropTypes.array.isRequired,
+};
 function SearchList(props) {
   const onClickItem = () => {
     props.onClickItem(true);
@@ -26,23 +30,21 @@ function SearchList(props) {
             size="huge"
           >
             {
-              props.items.map((item) => {
-                return (
-                  <List.Item
-                    key={item.id}
-                    onClick={onClickItem}
-                    style={{
-                      paddingTop: '1rem',
-                      paddingBottom: '1rem',
-                    }}
-                  >
-                    <List.Content>
-                      <List.Header>{item.name}</List.Header>
-                      <List.Description>{item.location}</List.Description>
-                    </List.Content>
-                  </List.Item>
-                );
-              })
+              props.items.map(item => (
+                <List.Item
+                  key={item.id}
+                  onClick={onClickItem}
+                  style={{
+                    paddingTop: '1rem',
+                    paddingBottom: '1rem',
+                  }}
+                >
+                  <List.Content>
+                    <List.Header>{item.name}</List.Header>
+                    <List.Description>{item.location}</List.Description>
+                  </List.Content>
+                </List.Item>
+              ))
             }
           </List>
         </Grid.Column>
@@ -50,4 +52,5 @@ function SearchList(props) {
     </Grid>
   );
 }
+SearchList.propTypes = propTypes;
 export default SearchList;

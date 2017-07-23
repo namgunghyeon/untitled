@@ -9,6 +9,11 @@ import {
   Label,
   Table,
 } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  onBack: PropTypes.func.isRequired,
+};
 
 function SearchDetail(props) {
   return (
@@ -86,4 +91,5 @@ function SearchDetail(props) {
     </Grid>
   );
 }
+SearchDetail.propTypes = propTypes;
 export default SearchDetail;

@@ -1,9 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute } from 'react-router';
 import App from './App';
 import SettingContainer from './SettingContainer';
 import SearchContainer from './SearchContainer';
+
+const propTypes = {
+  store: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+};
 
 function Root({ store, history }) {
   return (
@@ -24,4 +30,5 @@ function Root({ store, history }) {
     </Provider>
   );
 }
+Root.propTypes = propTypes;
 export default Root;

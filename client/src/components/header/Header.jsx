@@ -5,6 +5,12 @@ import {
   Icon,
 } from 'semantic-ui-react';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  onSettingToggle: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
+};
 
 function Header(props) {
   const onSettingToggle = () => {
@@ -34,4 +40,5 @@ function Header(props) {
     </Grid>
   );
 }
+Header.propTypes = propTypes;
 export default Header;

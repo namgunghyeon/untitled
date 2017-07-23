@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -33,14 +34,20 @@ const items = [{
   location: 'server/Api/Naver.py',
 }];
 
+const propTypes = {
+  searchKeywords: PropTypes.func.isRequired,
+};
+
 class SearchContainer extends Component {
+  static renderBar() {
+    return (<SearchBar />);
+  }
   constructor(props) {
     super(props);
     this.state = {
       isSettingClicked: false,
       isItemClicked: false,
     };
-    this.renderBar = this.renderBar.bind(this);
     this.renderDetailView = this.renderDetailView.bind(this);
     this.renderListView = this.renderListView.bind(this);
 
@@ -59,9 +66,6 @@ class SearchContainer extends Component {
       isItemClicked: false,
     });
     this.props.searchKeywords('namgunghyeon');
-  }
-  renderBar() {
-    return (<SearchBar />);
   }
   renderListView(isItemClicked) {
     return (
@@ -87,7 +91,7 @@ class SearchContainer extends Component {
   render() {
     return (
       <Container>
-        { this.renderBar() }
+        { SearchContainer.renderBar() }
         { this.renderListView(this.state.isItemClicked) }
         { this.renderDetailView(this.state.isItemClicked) }
       </Container>
@@ -95,7 +99,7 @@ class SearchContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps() {
   return {};
 }
 
@@ -105,5 +109,5 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-
+SearchContainer.propTypes = propTypes;
 export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);
