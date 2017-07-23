@@ -5,7 +5,7 @@ import { routerMiddleware } from 'react-router-redux';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import rootReducer from './rootReducer';
-import rootEpic from './data/epics';
+import rootEpic from './rootEpics';
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
 
