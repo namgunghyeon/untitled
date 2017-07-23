@@ -20,7 +20,6 @@ export function receiveKeywords(query) {
 }
 
 export function clearSearchResults() {
-  console.log('teststset');
   return {
     type: ActionTypes.CLEARED_SEARCH_RESULTS,
   };
