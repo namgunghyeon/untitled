@@ -1,7 +1,7 @@
+import { ajax } from 'rxjs/observable/dom/ajax';
 import { Observable } from 'rxjs/Observable';
 import * as ActionTypes from './actionTypes';
 import { receiveKeywords } from './actions';
-import { ajax } from 'rxjs/observable/dom/ajax';
 
 export default function searchKeywords(action$) {
   return action$.ofType(ActionTypes.SEARCHED_KEWORDS)
@@ -13,7 +13,7 @@ export default function searchKeywords(action$) {
         .mergeMap(() => Observable.merge(
           ajax.getJSON(`https://api.github.com/search/users?q=${q}`)
             .map(res => res.items)
-            .map(receiveKeywords)
-        ))
+            .map(receiveKeywords),
+        )),
     );
-};
+}

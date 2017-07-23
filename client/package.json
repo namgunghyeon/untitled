@@ -30,7 +30,6 @@
     "eslint-plugin-react": "^7.1.0",
     "jest": "^20.0.4",
     "nodemon": "^1.11.0",
-    "pre-commit": "^1.2.2",
     "react-scripts": "1.0.7",
     "style-loader": "^0.18.2",
     "svgo-loader": "^1.2.1",
@@ -44,7 +43,7 @@
     "eject": "react-scripts eject",
     "eslint-client": "node_modules/.bin/eslint ."
   },
-  "pre-commit": {
-    "runt": ["eslint-client"]
-  }
+  "eslintIgnore": [
+    "registerServiceWorker.js"
+  ]
 }

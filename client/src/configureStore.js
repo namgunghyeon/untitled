@@ -11,7 +11,7 @@ const epicMiddleware = createEpicMiddleware(rootEpic);
 
 const middlewares = [
   epicMiddleware,
-  routerMiddleware(browserHistory)
+  routerMiddleware(browserHistory),
 ];
 
 if (process.env.NODE_ENV !== 'production') {
@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
 export default function configureStore() {
   const store = createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(...middlewares))
+    composeWithDevTools(applyMiddleware(...middlewares)),
   );
   return store;
 }

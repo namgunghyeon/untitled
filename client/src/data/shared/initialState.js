@@ -3,4 +3,6 @@ const initialState = {
   searchDetail: {},
   environment: {},
   config: {},
-}
+};
+
+export default initialState;
