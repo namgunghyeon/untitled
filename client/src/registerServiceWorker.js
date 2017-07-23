@@ -7,14 +7,15 @@
 
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
-
+/* eslint no-console: ["error", { allow: ["log", "error"] }] */
+/* eslint no-param-reassign: ["error", { "props": false }] */
 export default function register() {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       navigator.serviceWorker
         .register(swUrl)
-        .then(registration => {
+        .then((registration) => {
           registration.onupdatefound = () => {
             const installingWorker = registration.installing;
             installingWorker.onstatechange = () => {
@@ -35,16 +36,14 @@ export default function register() {
             };
           };
         })
-        .catch(error => {
-          console.error('Error during service worker registration:', error);
-        });
+        .catch(error => console.error('Error during service worker registration:', error));
     });
   }
 }
 
 export function unregister() {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready.then(registration => {
+    navigator.serviceWorker.ready.then((registration) => {
       registration.unregister();
     });
   }
