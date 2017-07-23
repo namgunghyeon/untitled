@@ -7,11 +7,10 @@ import {
   SearchList,
   SearchDetail,
 } from '../components';
-
 import {
   SearchActions,
 } from '../data/search';
-console.log('SearchActions', SearchActions);
+
 const items = [{
   id: 1,
   name: 'getName',
@@ -111,7 +110,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(SearchContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(SearchContainer);
