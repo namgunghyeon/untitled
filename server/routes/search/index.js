@@ -1,7 +1,7 @@
+import { searchKeywords } from '../../controllers/search';
+
 function search(router) {
-    router.get('/', (req, res) => {
-        res.send('search');
-    });
+    router.get('/', searchKeywords);
     return router;
 }
 
