@@ -1,14 +1,16 @@
 import request from 'request';
-import queryString from 'query-string';
 import logger from '../../shared/logger';
+import { get } from '../../shared/utils/env';
+import config from '../../shared/config.json';
 
-const URL = 'http://localhost:3001';
+const env = get();
+const URL = `${config[env].api.host}:${config[env].api.port}`;
 
 function searchKeywords({ project, version, type, name }, callback) {
-    const stringified = queryString.stringify({ project, version, type, name });
-    const path = `/1api/search?${stringified}`;
+    const params = `{search(project:"${project}", version:"${version}", type:"${type}",name:"${name}"){Project,Version,Name,Path,Type}}`;
+    const path = `/graphql?query=${params}`;
+    logger.info(URL, path);
     request({ url: URL + path }, (error, response, body) => {
-        logger.info(error, response, body);
         callback(error, response, body);
     });
 }

@@ -8,13 +8,8 @@ function searchKeywords(req, res) {
         type,
         name,
     } = req.query;
-    searchModel.searchKeywords({ project, version, type, name }, () => {
-        res.send({
-            project,
-            version,
-            type,
-            name,
-        });
+    searchModel.searchKeywords({ project, version, type, name }, (error, response, body) => {
+        res.send(body);
     });
 }
 

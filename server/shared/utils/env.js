@@ -19,7 +19,7 @@ function isDebugging() {
 }
 
 function get() {
-    return process.env.NODE_ENV || 'staging';
+    return process.env.NODE_ENV || 'test';
 }
 
 module.exports = {
