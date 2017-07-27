@@ -5,7 +5,6 @@ module.exports = {
     jest: true,
   },
   rules: {
-    'import/prefer-default-export': 0,
-    "indent": ['error', 4],
+    'import/prefer-default-export': 0
   },
 };

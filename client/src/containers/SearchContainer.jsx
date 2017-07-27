@@ -9,33 +9,13 @@ import {
   SearchDetail,
 } from '../components';
 import {
+  SearchSelectors,
   SearchActions,
 } from '../data/search';
 
-const items = [{
-  id: 1,
-  name: 'getName',
-  location: 'server/Connection/Ping.py',
-}, {
-  id: 2,
-  name: 'getName',
-  location: 'server/Api/google.py',
-}, {
-  id: 3,
-  name: 'getName',
-  location: 'server/Api/Facebook.py',
-}, {
-  id: 4,
-  name: 'getName',
-  location: 'server/Api/Kakao.py',
-}, {
-  id: 5,
-  name: 'getName',
-  location: 'server/Api/Naver.py',
-}];
-
 const propTypes = {
   searchKeywords: PropTypes.func.isRequired,
+  keywords: PropTypes.array.isRequired,
 };
 
 class SearchContainer extends Component {
@@ -77,10 +57,13 @@ class SearchContainer extends Component {
     );
   }
   renderListView(isItemClicked) {
+    const {
+      keywords,
+    } = this.props;
     return (
       !isItemClicked ?
         <SearchList
-          items={items}
+          items={keywords}
           onClickItem={this.onClickItem}
         />
       :
@@ -108,8 +91,10 @@ class SearchContainer extends Component {
   }
 }
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return {
+    keywords: SearchSelectors.getKeywords(state),
+  };
 }
 
 function mapDispatchToProps(dispatch) {
