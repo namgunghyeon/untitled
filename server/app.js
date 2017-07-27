@@ -13,9 +13,9 @@ app.use(access.log);
 app.use('/api/search', searchRoute.search(router));
 
 app.all('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 app.listen(app.get('port'), () => {
-    logger.info(`App started at port ${app.get('port')}`);
+  logger.info(`App started at port ${app.get('port')}`);
 });
