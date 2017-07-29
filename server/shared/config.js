@@ -1,7 +1,7 @@
 export default {
   test: {
     api: {
-      host: 'http://192.168.56.1',
+      host: 'http://104.156.238.187',
       port: 8080,
     },
   },
