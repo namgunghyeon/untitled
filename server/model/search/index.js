@@ -1,7 +1,7 @@
 import request from 'request';
 import logger from '../../shared/logger';
 import { get } from '../../shared/utils/env';
-import config from '../../shared/config.json';
+import config from '../../shared/config';
 
 const env = get();
 const URL = `${config[env].api.host}:${config[env].api.port}`;

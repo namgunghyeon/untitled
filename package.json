@@ -24,10 +24,15 @@
     "pre-commit": "^1.2.2"
   },
   "scripts": {
-    "eslint-client": "cd client && node_modules/.bin/eslint .",
+    "eslint-client": "cd client && node_modules/.bin/eslint . --ignore-pattern '/build/'",
     "eslint-server": "node_modules/.bin/eslint server",
     "babel-node": "node_modules/.bin/babel-node",
-    "server": "node_modules/.bin/nodemon --exec npm run babel-node -- server/app.js"
+    "server": "node_modules/.bin/nodemon --exec npm run babel-node -- server/app.js",
+    "build:server": "babel server -d dist",
+    "build:client": "cd client && npm run build",
+    "build": "npm run build:server && npm run build:client",
+    "deploy": "npm run build:server && npm start",
+    "start": "node dist/app.js"
   },
   "pre-commit": {
     "run": [

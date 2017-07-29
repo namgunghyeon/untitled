@@ -10,6 +10,10 @@ const router = express.Router();
 app.set('port', process.env.PORT || 3001);
 app.use(access.log);
 
+app.use(express.static(path.join(__dirname, '../client/build'), {
+  index: false,
+}));
+
 app.use('/api/search', searchRoute.search(router));
 
 app.all('*', (req, res) => {
