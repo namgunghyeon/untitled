@@ -11,16 +11,20 @@ const propTypes = {
 class App extends Component {
   render() {
     return (
-      <Grid>
+      <div>
         <Grid.Row>
           <HeaderContainer />
         </Grid.Row>
-        <Grid.Row>
+        <Grid.Row
+          style={{
+            padding: '1rem',
+          }}
+        >
           {
             cloneElement(this.props.children, {})
           }
         </Grid.Row>
-      </Grid>
+      </div>
     );
   }
 }

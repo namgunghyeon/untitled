@@ -16,5 +16,4 @@ class SettingContainer extends Component {
   }
 }
 
-
 export default SettingContainer;
