@@ -6,7 +6,8 @@ export default function searchResults(state = initialState, action) {
     case ActionTypes.SEARCHED_KEWORDS:
       return {
         ...action.payload,
-        isSearch: true,
+        isSearch: action.payload.keyword !== '',
+        keywords: action.payload.keyword === '' ? [] : state.keywords,
       };
     case ActionTypes.RECEIVED_KEWORDS: {
       const keywords = [...action.payload.query.search];
