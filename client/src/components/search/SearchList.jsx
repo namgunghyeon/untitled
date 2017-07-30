@@ -29,15 +29,21 @@ function SearchList(props) {
               props.items.map(item => (
                 <List.Item
                   key={item.Name}
-                  onClick={onClickItem}
                   style={{
                     paddingTop: '1rem',
                     paddingBottom: '1rem',
                   }}
                 >
                   <List.Content>
-                    <List.Header>{item.Name}</List.Header>
-                    <List.Description>{item.Path}</List.Description>
+                    <List.Header
+                      as="a"
+                      onClick={onClickItem}
+                    >
+                      {item.Name}
+                    </List.Header>
+                    <List.Description>
+                      <h5>{item.Path}</h5>
+                    </List.Description>
                   </List.Content>
                 </List.Item>
               ))
