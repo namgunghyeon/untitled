@@ -4,6 +4,7 @@ import SearchList from './search/SearchList';
 import SearchDetail from './search/SearchDetail';
 import SettingHeader from './setting/SettingHeader';
 import SettingContents from './setting/SettingContents';
+import Loading from './loader/Loading';
 
 export {
   Header,
@@ -12,4 +13,5 @@ export {
   SettingHeader,
   SearchDetail,
   SettingContents,
+  Loading,
 };

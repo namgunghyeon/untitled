@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Grid, Button } from 'semantic-ui-react';
+import { Input, Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -17,19 +17,12 @@ function SearchBar(props) {
         <Grid.Column>
           <Input
             fluid
-            action
             type="text"
             placeholder="Search..."
             size="large"
+            icon={{ name: 'search', circular: true, link: true }}
             onChange={props.onHandelSearch}
-          >
-            <input />
-            <Button
-              type="submit"
-            >
-              Search
-            </Button>
-          </Input>
+          />
         </Grid.Column>
       </Grid.Row>
     </Grid>

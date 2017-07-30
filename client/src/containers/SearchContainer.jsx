@@ -7,6 +7,7 @@ import {
   SearchBar,
   SearchList,
   SearchDetail,
+  Loading,
 } from '../components';
 import {
   SearchSelectors,
@@ -16,6 +17,7 @@ import {
 const propTypes = {
   searchKeywords: PropTypes.func.isRequired,
   keywords: PropTypes.array.isRequired,
+  isSearch: PropTypes.bool.isRequired,
 };
 
 class SearchContainer extends Component {
@@ -27,7 +29,8 @@ class SearchContainer extends Component {
     };
     this.renderBar = this.renderBar.bind(this);
     this.renderDetailView = this.renderDetailView.bind(this);
-    this.renderListView = this.renderListView.bind(this);
+    this.renderListOrDetailView = this.renderListOrDetailView.bind(this);
+    this.renderSearchResult = this.renderSearchResult.bind(this);
 
     this.onClickItem = this.onClickItem.bind(this);
     this.onClickBack = this.onClickBack.bind(this);
@@ -56,7 +59,7 @@ class SearchContainer extends Component {
       />
     );
   }
-  renderListView(isItemClicked) {
+  renderListOrDetailView(isItemClicked) {
     const {
       keywords,
     } = this.props;
@@ -67,7 +70,9 @@ class SearchContainer extends Component {
           onClickItem={this.onClickItem}
         />
       :
-        null
+        <SearchDetail
+          onBack={this.onClickBack}
+        />
     );
   }
   renderDetailView(isItemClicked) {
@@ -80,12 +85,19 @@ class SearchContainer extends Component {
         null
     );
   }
+  renderSearchResult(isSearching) {
+    if (isSearching) {
+      return (<Loading />);
+    }
+    return (
+      this.renderListOrDetailView(this.state.isItemClicked)
+    );
+  }
   render() {
     return (
       <Container>
         { this.renderBar() }
-        { this.renderListView(this.state.isItemClicked) }
-        { this.renderDetailView(this.state.isItemClicked) }
+        { this.renderSearchResult(this.props.isSearch) }
       </Container>
     );
   }
@@ -94,6 +106,7 @@ class SearchContainer extends Component {
 function mapStateToProps(state) {
   return {
     keywords: SearchSelectors.getKeywords(state),
+    isSearch: SearchSelectors.getIsSearching(state),
   };
 }
 
