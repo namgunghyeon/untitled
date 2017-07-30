@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Grid,
   Menu,
-  Icon,
 } from 'semantic-ui-react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
@@ -27,13 +26,22 @@ function Header(props) {
             color="blue"
             size="massive"
           >
-            <Menu.Item
-              onClick={onSettingToggle}
-            >
-              <Icon name="settings" />
-              <Link to="settings">Settings</Link>
-
-            </Menu.Item>
+            {
+              !props.open ?
+                <Menu.Item
+                  onClick={onSettingToggle}
+                  icon={{ name: 'settings', link: true }}
+                  as={Link}
+                  to="/settings"
+                />
+              :
+                <Menu.Item
+                  onClick={onSettingToggle}
+                  icon={{ name: 'home', link: true }}
+                  as={Link}
+                  to="/main"
+                />
+            }
           </Menu>
         </Grid.Column>
       </Grid.Row>
