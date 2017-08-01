@@ -4,6 +4,9 @@ import {
 } from '../components';
 
 class HeaderContainer extends Component {
+  static moveScrollTop() {
+    window.scrollTo(0, 0);
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +19,7 @@ class HeaderContainer extends Component {
       ...this.state,
       isSettingOpen: status,
     });
+    HeaderContainer.moveScrollTop();
   }
   render() {
     return (

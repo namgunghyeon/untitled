@@ -21,6 +21,9 @@ const propTypes = {
 };
 
 class SearchContainer extends Component {
+  static moveScrollTop() {
+    window.scrollTo(0, 0);
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -41,12 +44,14 @@ class SearchContainer extends Component {
       ...this.state,
       isItemClicked: status,
     });
+    SearchContainer.moveScrollTop();
   }
   onClickBack() {
     this.setState({
       ...this.state,
       isItemClicked: false,
     });
+    SearchContainer.moveScrollTop();
   }
   onHandelSaerch(e, data) {
     const keyword = data.value;
