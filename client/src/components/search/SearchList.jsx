@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Grid,
   List,
+  Label,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
@@ -31,7 +32,6 @@ function SearchList(props) {
                   key={item.Name}
                   style={{
                     paddingTop: '1rem',
-                    paddingBottom: '1rem',
                   }}
                 >
                   <List.Content>
@@ -41,8 +41,14 @@ function SearchList(props) {
                     >
                       {item.Name}
                     </List.Header>
-                    <List.Description>
-                      <h5>{item.Path}</h5>
+                    <List.Description
+                      style={{
+                        paddingTop: '1rem',
+                      }}
+                    >
+                      <Label color="yellow" key="angular" size="small">
+                        {item.Project}
+                      </Label>
                     </List.Description>
                   </List.Content>
                 </List.Item>
