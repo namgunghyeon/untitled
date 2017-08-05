@@ -13,49 +13,24 @@ import {
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-const propTypes = {
-  onBack: PropTypes.func.isRequired,
+const colorMap = {
+  function: 'purple',
+  value: 'green',
 };
 
-const details = [{
-  type: 'function',
-  name: 'getName1',
-  path: 'server/Connection/Ping.py',
-  frequency: 15,
-}, {
-  type: 'function',
-  name: 'getName2',
-  path: 'server/Connection/Ping.py',
-  frequency: 15,
-}, {
-  type: 'function',
-  name: 'getName3',
-  path: 'server/Connection/Ping.py',
-  frequency: 15,
-}, {
-  type: 'function',
-  name: 'getName4',
-  path: 'server/Connection/Ping.py',
-  frequency: 15,
-}, {
-  type: 'function',
-  name: 'getName5',
-  path: 'server/Connection/Ping.py',
-  frequency: 15,
-}, {
-  type: 'function',
-  name: 'getName6',
-  path: 'server/Connection/Ping.py',
-  frequency: 15,
-}];
+const propTypes = {
+  onBack: PropTypes.func.isRequired,
+  details: PropTypes.array.isRequired,
+};
 
 function SearchDetail(props) {
+  const { details } = props;
   const renderTabContent = () => (
     <Grid>
       {
         details.map(item => (
           <div
-            key={item.name}
+            key={`${item.KeywordIndex}_${item.Project}_${item.Type}`}
             style={{
               width: '100%',
               paddingTop: '2rem',
@@ -71,11 +46,11 @@ function SearchDetail(props) {
               <Grid.Column>
                 <List.Item>
                   <Label
-                    color="purple"
+                    color={colorMap[item.Type]}
                     size="large"
                     horizontal
                   >
-                    Function
+                    { item.Type }
                   </Label>
                   { item.name }
                 </List.Item>
@@ -87,8 +62,8 @@ function SearchDetail(props) {
                   <Table basic="very" celled>
                     <Table.Header>
                       <Table.Row>
-                        <Table.HeaderCell>Title</Table.HeaderCell>
-                        <Table.HeaderCell>Contents</Table.HeaderCell>
+                        <Table.HeaderCell>Name</Table.HeaderCell>
+                        <Table.HeaderCell>{ item.KeywordIndex }</Table.HeaderCell>
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
@@ -101,7 +76,7 @@ function SearchDetail(props) {
                           </Header>
                         </Table.Cell>
                         <Table.Cell>
-                          { item.path }
+                          { item.Path }
                         </Table.Cell>
                       </Table.Row>
                       <Table.Row>

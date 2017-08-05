@@ -18,6 +18,7 @@ const propTypes = {
   searchKeywords: PropTypes.func.isRequired,
   searchDetailKeyword: PropTypes.func.isRequired,
   keywords: PropTypes.array.isRequired,
+  detailKeywords: PropTypes.array.isRequired,
   isSearch: PropTypes.bool.isRequired,
 };
 
@@ -32,7 +33,6 @@ class SearchContainer extends Component {
       isItemClicked: false,
     };
     this.renderBar = this.renderBar.bind(this);
-    this.renderDetailView = this.renderDetailView.bind(this);
     this.renderListOrDetailView = this.renderListOrDetailView.bind(this);
     this.renderSearchResult = this.renderSearchResult.bind(this);
 
@@ -85,17 +85,8 @@ class SearchContainer extends Component {
       :
         <SearchDetail
           onBack={this.onClickBack}
+          details={this.props.detailKeywords}
         />
-    );
-  }
-  renderDetailView(isItemClicked) {
-    return (
-      isItemClicked ?
-        <SearchDetail
-          onBack={this.onClickBack}
-        />
-      :
-        null
     );
   }
   renderSearchResult(isSearching) {
@@ -119,6 +110,7 @@ class SearchContainer extends Component {
 function mapStateToProps(state) {
   return {
     keywords: SearchSelectors.getKeywords(state),
+    detailKeywords: SearchSelectors.getDetailKeywords(state),
     isSearch: SearchSelectors.getIsSearching(state),
   };
 }
