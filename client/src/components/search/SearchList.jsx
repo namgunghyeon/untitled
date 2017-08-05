@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Grid,
   List,
-  Label,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
@@ -10,8 +9,9 @@ const propTypes = {
   items: PropTypes.array.isRequired,
 };
 function SearchList(props) {
-  const onClickItem = () => {
-    props.onClickItem(true);
+  const onClickItem = (e) => {
+    const { id } = e.target;
+    props.onClickItem(true, id);
   };
   return (
     <Grid columns={1}>
@@ -29,27 +29,19 @@ function SearchList(props) {
             {
               props.items.map(item => (
                 <List.Item
-                  key={item.Name}
+                  key={item.Keyword}
                   style={{
-                    paddingTop: '1rem',
+                    padding: '1rem',
                   }}
                 >
                   <List.Content>
                     <List.Header
                       as="a"
+                      id={item.Keyword}
                       onClick={onClickItem}
                     >
-                      {item.Name}
+                      {item.Keyword}
                     </List.Header>
-                    <List.Description
-                      style={{
-                        paddingTop: '1rem',
-                      }}
-                    >
-                      <Label color="yellow" key="angular" size="small">
-                        {item.Project}
-                      </Label>
-                    </List.Description>
                   </List.Content>
                 </List.Item>
               ))

@@ -7,7 +7,7 @@ export default {
   },
   staging: {
     api: {
-      host: 'http://104.156.238.187',
+      host: 'http://192.168.0.25',
       port: 8080,
     },
   },

@@ -16,6 +16,7 @@ import {
 
 const propTypes = {
   searchKeywords: PropTypes.func.isRequired,
+  searchDetailKeyword: PropTypes.func.isRequired,
   keywords: PropTypes.array.isRequired,
   isSearch: PropTypes.bool.isRequired,
 };
@@ -39,12 +40,13 @@ class SearchContainer extends Component {
     this.onClickBack = this.onClickBack.bind(this);
     this.onHandelSaerch = this.onHandelSaerch.bind(this);
   }
-  onClickItem(status) {
+  onClickItem(status, value) {
     this.setState({
       ...this.state,
       isItemClicked: status,
     });
     SearchContainer.moveScrollTop();
+    this.props.searchDetailKeyword(value);
   }
   onClickBack() {
     this.setState({
@@ -55,6 +57,12 @@ class SearchContainer extends Component {
   }
   onHandelSaerch(e, data) {
     const keyword = data.value;
+    if (this.state.isItemClicked) {
+      this.setState({
+        ...this.state,
+        isItemClicked: false,
+      });
+    }
     this.props.searchKeywords(keyword);
   }
   renderBar() {

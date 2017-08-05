@@ -1,8 +1,9 @@
 import { combineEpics } from 'redux-observable';
-import { searchKeywords } from './data/search/epics';
+import { searchKeywords, searchDetailKeyword } from './data/search/epics';
 
 const epics = [
   searchKeywords,
+  searchDetailKeyword,
 ];
 
 export default combineEpics(...epics);

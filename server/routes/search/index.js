@@ -1,7 +1,8 @@
-import { searchKeywords } from '../../controllers/search';
+import { searchKeywordIndex, searchKeyword } from '../../controllers/search';
 
 function search(router) {
-  router.get('/', searchKeywords);
+  router.get('/', searchKeywordIndex);
+  router.get('/detail', searchKeyword);
   return router;
 }
 
