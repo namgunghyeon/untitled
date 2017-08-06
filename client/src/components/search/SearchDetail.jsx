@@ -14,18 +14,17 @@ import {
 import PropTypes from 'prop-types';
 
 const colorMap = {
-  function: 'purple',
+  'function': 'purple',
   value: 'green',
 };
 
 const propTypes = {
   onBack: PropTypes.func.isRequired,
-  details: PropTypes.array.isRequired,
+  details: PropTypes.object.isRequired,
 };
 
 function SearchDetail(props) {
-  const { details } = props;
-  const renderTabContent = () => (
+  const renderTabContent = details => (
     <Grid>
       {
         details.map(item => (
@@ -102,11 +101,14 @@ function SearchDetail(props) {
       }
     </Grid>
   );
-  const buildTabPanels = () => ([
-      { menuItem: 'Angular', render: () => <Tab.Pane attached={false}>{ renderTabContent() }</Tab.Pane> },
-      { menuItem: 'Tab 2', render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane> },
-      { menuItem: 'Tab 3', render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane> },
-  ]);
+  const buildTabPanels = (details) => {
+    const projects = Object.keys(details);
+    return projects.map(name => ({
+      menuItem: name,
+      render: () =>
+        <Tab.Pane attached={false}>{ renderTabContent(details[name]) }</Tab.Pane>,
+    }));
+  };
   return (
     <Grid columns={1}>
       <Grid.Row>
@@ -126,7 +128,7 @@ function SearchDetail(props) {
         <Grid.Column>
           <Tab
             menu={{ secondary: true, pointing: true }}
-            panes={buildTabPanels()}
+            panes={buildTabPanels(props.details)}
           />
         </Grid.Column>
       </Grid.Row>

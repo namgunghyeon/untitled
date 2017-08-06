@@ -18,7 +18,7 @@ const propTypes = {
   searchKeywords: PropTypes.func.isRequired,
   searchDetailKeyword: PropTypes.func.isRequired,
   keywords: PropTypes.array.isRequired,
-  detailKeywords: PropTypes.array.isRequired,
+  detailKeywordMap: PropTypes.object.isRequired,
   isSearch: PropTypes.bool.isRequired,
 };
 
@@ -85,7 +85,7 @@ class SearchContainer extends Component {
       :
         <SearchDetail
           onBack={this.onClickBack}
-          details={this.props.detailKeywords}
+          details={this.props.detailKeywordMap}
         />
     );
   }
@@ -110,7 +110,7 @@ class SearchContainer extends Component {
 function mapStateToProps(state) {
   return {
     keywords: SearchSelectors.getKeywords(state),
-    detailKeywords: SearchSelectors.getDetailKeywords(state),
+    detailKeywordMap: SearchSelectors.getDetailKeyowrdMap(state),
     isSearch: SearchSelectors.getIsSearching(state),
   };
 }
