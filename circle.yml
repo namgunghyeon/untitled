@@ -16,5 +16,5 @@ deployment:
     commands:
       - git clone git@github.com:namgunghyeon/untitled.git
       - cd untitled/ && npm install
-      - cd untitled/client && npm install
+      - cd untitled/client/ && npm install
       - cd untitled/ && npm run build && rsync -avz untitled/ root@45.32.38.24:~/test
