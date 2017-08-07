@@ -14,4 +14,4 @@ deployment:
   master:
     branch: master
     commands:
-      - git clone git@github.com:namgunghyeon/untitled_api.git && rsync -avz untitled_api/ root@45.32.38.24:root/test
+      - git clone git@github.com:namgunghyeon/untitled_api.git && rsync -avz untitled_api/ root@45.32.38.24:/test
