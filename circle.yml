@@ -1,0 +1,17 @@
+machine:
+  node:
+    version: 8.1.2
+
+dependencies:
+  pre:
+    - npm install node-sass
+
+test:
+  override:
+    - echo "No Tests"
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - ssh root@45.32.38.24 'cd /root/test && wget https://dl.eff.org/certbot-auto'
