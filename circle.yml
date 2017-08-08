@@ -17,5 +17,5 @@ deployment:
       - git clone git@github.com:namgunghyeon/untitled.git
       - cd untitled/ && npm install
       - cd untitled/client/ && npm install
-      - cd untitled/ && npm run build && cd .. && rsync -avz untitled/ root@45.32.38.24:~/test
-      - ssh root@45.32.38.24 'cd ~/test && bash start.sh'
+      - cd untitled/ && npm run build && cd .. && rsync -avz untitled/ root@45.32.38.24:~/untitled
+      - ssh -i ~/.ssh/id_rsa_vultr root@45.32.38.24  'cd ~/test && bash -i start.sh'
