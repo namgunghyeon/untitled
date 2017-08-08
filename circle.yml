@@ -18,3 +18,4 @@ deployment:
       - cd untitled/ && npm install
       - cd untitled/client/ && npm install
       - cd untitled/ && npm run build && cd .. && rsync -avz untitled/ root@45.32.38.24:~/test
+      - ssh root@45.32.38.24 && npm install pm2 && pm2 kill && cd ~/test && pm2 start npm --name "untitled" -- run deploy
