@@ -10,13 +10,20 @@ const propTypes = {
   onHandleMore: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
   readTime: PropTypes.number.isRequired,
+  isMoreSearch: PropTypes.bool.isRequired,
 };
+
 function SearchList(props) {
+  const {
+    onHandleMore,
+    isMoreSearch,
+    readTime,
+  } = props;
   const onClickItem = (e) => {
     const { id } = e.target;
     props.onClickItem(true, id);
   };
-  const renderReadTime = (readTime) => {
+  const renderReadTime = () => {
     if (readTime) {
       return (
         <div>
@@ -28,16 +35,15 @@ function SearchList(props) {
   };
   const renderItem = (item) => {
     if (item.reserved) {
-      const {
-        onHandleMore,
-      } = props;
       return (
         <List.Header
           as="a"
           id={item.Keyword}
           onClick={onHandleMore}
         >
-          <Button positive fluid>{'More'}</Button>
+          <Button positive fluid>
+            { !isMoreSearch ? 'More' : 'Loading...'}
+          </Button>
         </List.Header>
       );
     }
@@ -53,7 +59,7 @@ function SearchList(props) {
   };
   return (
     <Grid columns={1}>
-      { renderReadTime(props.readTime) }
+      { renderReadTime(readTime) }
       <Grid.Row>
         <Grid.Column>
           <List

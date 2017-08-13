@@ -90,14 +90,17 @@ class SearchContainer extends Component {
   renderListOrDetailView(isItemClicked) {
     const {
       keywords,
+      isMoreSearch,
+      readTime,
     } = this.props;
     return (
       !isItemClicked ?
         <SearchList
           items={keywords}
-          readTime={this.props.readTime}
+          readTime={readTime}
           onClickItem={this.onClickItem}
           onHandleMore={this.onHandleMore}
+          isMoreSearch={isMoreSearch}
         />
       :
         <SearchDetail
@@ -129,6 +132,7 @@ function mapStateToProps(state) {
     keywords: SearchSelectors.getKeywords(state),
     detailKeywordMap: SearchSelectors.getDetailKeyowrdMap(state),
     isSearch: SearchSelectors.getIsSearching(state),
+    isMoreSearch: SearchSelectors.getIsMoreSearching(state),
     readTime: SearchSelectors.getReadTime(state),
     keyword: SearchSelectors.getKeyword(state),
   };
