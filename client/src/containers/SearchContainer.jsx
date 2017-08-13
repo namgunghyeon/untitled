@@ -63,7 +63,11 @@ class SearchContainer extends Component {
         isItemClicked: false,
       });
     }
-    this.props.searchKeywords(keyword);
+    this.props.searchKeywords({
+      name: keyword,
+      offset: 0,
+      limit: 30,
+    });
   }
   renderBar() {
     return (

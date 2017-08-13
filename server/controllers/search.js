@@ -4,8 +4,10 @@ import searchModel from '../model/search';
 function searchKeywordIndex(req, res) {
   const {
     name,
+    offset,
+    limit,
   } = req.query;
-  searchModel.searchKeywordIndex({ name }, (error, response, body) => {
+  searchModel.searchKeywordIndex({ name, offset, limit }, (error, response, body) => {
     res.send(body);
   });
 }

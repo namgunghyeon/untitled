@@ -12,7 +12,7 @@ export function searchKeywords(action$) {
     Observable.timer(1)
     .takeUntil(action$.ofType(ActionTypes.CLEARED_SEARCH_RESULTS))
     .mergeMap(() => Observable.merge(
-      ajax.getJSON(`api/search?name=${keyword}`)
+      ajax.getJSON(`api/search?name=${keyword.name}&offset=${keyword.offset}&limit=${keyword.limit}`)
       .map(res => res.data)
       .map(receiveKeywords),
     )),
