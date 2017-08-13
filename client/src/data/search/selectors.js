@@ -15,3 +15,4 @@ export const getReadTime = (state) => {
   const end = state.search.end;
   return end - start;
 };
+export const getKeyword = state => state.search.keyword;

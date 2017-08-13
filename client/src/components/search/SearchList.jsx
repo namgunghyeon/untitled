@@ -2,10 +2,12 @@ import React from 'react';
 import {
   Grid,
   List,
+  Button,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
+  onHandleMore: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
   readTime: PropTypes.number.isRequired,
 };
@@ -23,6 +25,31 @@ function SearchList(props) {
       );
     }
     return (<div />);
+  };
+  const renderItem = (item) => {
+    if (item.reserved) {
+      const {
+        onHandleMore,
+      } = props;
+      return (
+        <List.Header
+          as="a"
+          id={item.Keyword}
+          onClick={onHandleMore}
+        >
+          <Button positive fluid>{'More'}</Button>
+        </List.Header>
+      );
+    }
+    return (
+      <List.Header
+        as="a"
+        id={item.Keyword}
+        onClick={onClickItem}
+      >
+        {item.Keyword}
+      </List.Header>
+    );
   };
   return (
     <Grid columns={1}>
@@ -43,13 +70,7 @@ function SearchList(props) {
                   }}
                 >
                   <List.Content>
-                    <List.Header
-                      as="a"
-                      id={item.Keyword}
-                      onClick={onClickItem}
-                    >
-                      {item.Keyword}
-                    </List.Header>
+                    { renderItem(item) }
                   </List.Content>
                 </List.Item>
               ))

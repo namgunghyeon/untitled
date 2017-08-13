@@ -19,6 +19,7 @@ const propTypes = {
   searchDetailKeyword: PropTypes.func.isRequired,
   keywords: PropTypes.array.isRequired,
   detailKeywordMap: PropTypes.object.isRequired,
+  keyword: PropTypes.object.isRequired,
   isSearch: PropTypes.bool.isRequired,
   readTime: PropTypes.number.isRequired,
 };
@@ -39,6 +40,7 @@ class SearchContainer extends Component {
 
     this.onClickItem = this.onClickItem.bind(this);
     this.onClickBack = this.onClickBack.bind(this);
+    this.onHandleMore = this.onHandleMore.bind(this);
     this.onHandelSaerch = this.onHandelSaerch.bind(this);
   }
   onClickItem(status, value) {
@@ -57,7 +59,7 @@ class SearchContainer extends Component {
     SearchContainer.moveScrollTop();
   }
   onHandelSaerch(e, data) {
-    const keyword = data.value;
+    const name = data.value;
     if (this.state.isItemClicked) {
       this.setState({
         ...this.state,
@@ -65,8 +67,16 @@ class SearchContainer extends Component {
       });
     }
     this.props.searchKeywords({
-      name: keyword,
+      name,
       offset: 0,
+      limit: 30,
+    });
+  }
+  onHandleMore() {
+    const { keyword, keywords } = this.props;
+    this.props.searchKeywords({
+      name: keyword.name,
+      offset: keywords.length,
       limit: 30,
     });
   }
@@ -87,6 +97,7 @@ class SearchContainer extends Component {
           items={keywords}
           readTime={this.props.readTime}
           onClickItem={this.onClickItem}
+          onHandleMore={this.onHandleMore}
         />
       :
         <SearchDetail
@@ -119,6 +130,7 @@ function mapStateToProps(state) {
     detailKeywordMap: SearchSelectors.getDetailKeyowrdMap(state),
     isSearch: SearchSelectors.getIsSearching(state),
     readTime: SearchSelectors.getReadTime(state),
+    keyword: SearchSelectors.getKeyword(state),
   };
 }
 

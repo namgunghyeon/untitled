@@ -6,9 +6,11 @@ const initialState = [];
 export default function searchResults(state = initialState, action) {
   switch (action.type) {
     case ActionTypes.SEARCHED_KEWORDS: {
+      const keyword = action.payload.keyword;
       return {
-        isSearch: action.payload.keyword !== '',
-        keywords: action.payload.keyword === '' ? [] : state.keywords,
+        keyword,
+        isSearch: keyword.name !== '',
+        keywords: keyword.name === '' ? [] : state.keywords,
         start: moment().valueOf(),
       };
     }
@@ -19,7 +21,22 @@ export default function searchResults(state = initialState, action) {
       };
     }
     case ActionTypes.RECEIVED_KEWORDS: {
-      const keywords = [...action.payload.query.keywordIndex];
+      if (!action.payload.query) {
+        return state;
+      }
+      const isFirst = state.keyword.offset === 0;
+      let keywords = [];
+      if (isFirst) {
+        keywords = [...action.payload.query.keywordIndex];
+      } else {
+        state.keywords.pop(); // Remove more key
+        keywords = [...state.keywords, ...action.payload.query.keywordIndex];
+      }
+      if (keywords.length) {
+        keywords.push({
+          reserved: 'more',
+        });
+      }
       return {
         ...state,
         keywords,
