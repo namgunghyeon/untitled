@@ -5,6 +5,7 @@
     "dependencies": {
         "history": "^2.1.2",
         "lodash": "^4.17.4",
+        "moment-timezone": "^0.5.13",
         "prop-types": "^15.5.10",
         "react": "^15.6.1",
         "react-cookie": "^2.0.8",

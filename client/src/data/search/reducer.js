@@ -1,3 +1,5 @@
+import moment from 'moment-timezone';
+
 import * as ActionTypes from './actionTypes';
 
 const initialState = [];
@@ -5,9 +7,9 @@ export default function searchResults(state = initialState, action) {
   switch (action.type) {
     case ActionTypes.SEARCHED_KEWORDS: {
       return {
-        ...action.payload,
         isSearch: action.payload.keyword !== '',
         keywords: action.payload.keyword === '' ? [] : state.keywords,
+        start: moment().valueOf(),
       };
     }
     case ActionTypes.SEARCHED_DETAIL_KEYWORD: {
@@ -19,8 +21,10 @@ export default function searchResults(state = initialState, action) {
     case ActionTypes.RECEIVED_KEWORDS: {
       const keywords = [...action.payload.query.keywordIndex];
       return {
+        ...state,
         keywords,
         isSearch: false,
+        end: moment().valueOf(),
       };
     }
     case ActionTypes.RECEIVED_DETAIL_KEYWORDS: {

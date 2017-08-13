@@ -20,6 +20,7 @@ const propTypes = {
   keywords: PropTypes.array.isRequired,
   detailKeywordMap: PropTypes.object.isRequired,
   isSearch: PropTypes.bool.isRequired,
+  readTime: PropTypes.number.isRequired,
 };
 
 class SearchContainer extends Component {
@@ -84,6 +85,7 @@ class SearchContainer extends Component {
       !isItemClicked ?
         <SearchList
           items={keywords}
+          readTime={this.props.readTime}
           onClickItem={this.onClickItem}
         />
       :
@@ -116,6 +118,7 @@ function mapStateToProps(state) {
     keywords: SearchSelectors.getKeywords(state),
     detailKeywordMap: SearchSelectors.getDetailKeyowrdMap(state),
     isSearch: SearchSelectors.getIsSearching(state),
+    readTime: SearchSelectors.getReadTime(state),
   };
 }
 

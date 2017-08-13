@@ -7,19 +7,27 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   items: PropTypes.array.isRequired,
+  readTime: PropTypes.number.isRequired,
 };
 function SearchList(props) {
   const onClickItem = (e) => {
     const { id } = e.target;
     props.onClickItem(true, id);
   };
+  const renderReadTime = (readTime) => {
+    if (readTime) {
+      return (
+        <div>
+          { `${readTime / 1000} Sec` }
+        </div>
+      );
+    }
+    return (<div />);
+  };
   return (
     <Grid columns={1}>
-      <Grid.Row
-        style={{
-          paddingTop: '2rem',
-        }}
-      >
+      { renderReadTime(props.readTime) }
+      <Grid.Row>
         <Grid.Column>
           <List
             divided
@@ -31,7 +39,7 @@ function SearchList(props) {
                 <List.Item
                   key={item.Keyword}
                   style={{
-                    padding: '1rem',
+                    paddingBottom: '1rem',
                   }}
                 >
                   <List.Content>
