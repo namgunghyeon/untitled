@@ -41,7 +41,11 @@ function SearchList(props) {
           id={item.Keyword}
           onClick={onHandleMore}
         >
-          <Button positive fluid>
+          <Button
+            fluid
+            disabled={isMoreSearch}
+            color="green"
+          >
             { !isMoreSearch ? 'More' : 'Loading...'}
           </Button>
         </List.Header>
