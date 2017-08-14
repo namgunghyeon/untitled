@@ -34,7 +34,8 @@ export default function searchResults(state = initialState, action) {
         state.keywords.pop(); // Remove more key
         keywords = [...state.keywords, ...action.payload.query.keywordIndex];
       }
-      if (keywords.length) {
+      const length = keywords.length;
+      if (length && length === state.keyword.limit) {
         keywords.push({
           reserved: 'more',
         });

@@ -5,6 +5,7 @@ import SearchDetail from './search/SearchDetail';
 import SettingHeader from './setting/SettingHeader';
 import SettingContents from './setting/SettingContents';
 import Loading from './loader/Loading';
+import ArrowUpBtn from './arrowUpBtn/ArrowUpBtn';
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   SearchDetail,
   SettingContents,
   Loading,
+  ArrowUpBtn,
 };
