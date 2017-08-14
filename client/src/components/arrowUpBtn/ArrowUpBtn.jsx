@@ -22,7 +22,7 @@ function ArrowUpBtn(props) {
               circular
               color="yellow"
               icon={
-                <Icon name="arrow up" size="large" />
+                <Icon name="arrow up" size="big" />
               }
               onClick={props.onHandleUp}
             />
