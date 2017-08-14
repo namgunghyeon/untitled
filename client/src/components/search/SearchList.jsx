@@ -5,9 +5,13 @@ import {
   Button,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import {
+  ArrowUpBtn,
+} from '../../components';
 
 const propTypes = {
   onHandleMore: PropTypes.func.isRequired,
+  onHandleUp: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
   readTime: PropTypes.number.isRequired,
   isMoreSearch: PropTypes.bool.isRequired,
@@ -86,8 +90,14 @@ function SearchList(props) {
               ))
             }
           </List>
+          {
+            <ArrowUpBtn
+              onHandleUp={props.onHandleUp}
+            />
+          }
         </Grid.Column>
       </Grid.Row>
+
     </Grid>
   );
 }

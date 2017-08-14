@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import './ArrowUpBtn.css';
 
 const propTypes = {
-  onHandelUp: PropTypes.func.isRequired,
+  onHandleUp: PropTypes.func.isRequired,
 };
 
 function ArrowUpBtn(props) {
@@ -17,14 +17,14 @@ function ArrowUpBtn(props) {
         }}
       >
         <Grid.Column>
-          <div className="app up-btn">
+          <div className="up-btn">
             <Button
               circular
               color="yellow"
               icon={
                 <Icon name="arrow up" size="large" />
               }
-              onClick={props.onHandelUp}
+              onClick={props.onHandleUp}
             />
           </div>
         </Grid.Column>

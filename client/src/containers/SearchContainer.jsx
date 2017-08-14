@@ -21,6 +21,7 @@ const propTypes = {
   detailKeywordMap: PropTypes.object.isRequired,
   keyword: PropTypes.object.isRequired,
   isSearch: PropTypes.bool.isRequired,
+  isMoreSearch: PropTypes.bool.isRequired,
   readTime: PropTypes.number.isRequired,
 };
 
@@ -100,6 +101,7 @@ class SearchContainer extends Component {
           readTime={readTime}
           onClickItem={this.onClickItem}
           onHandleMore={this.onHandleMore}
+          onHandleUp={SearchContainer.moveScrollTop}
           isMoreSearch={isMoreSearch}
         />
       :

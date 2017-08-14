@@ -2,9 +2,6 @@ import React, { Component, cloneElement } from 'react';
 import { Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import HeaderContainer from './HeaderContainer';
-import {
-  ArrowUpBtn,
-} from '../components';
 
 const propTypes = {
   children: PropTypes.object.isRequired,
@@ -27,11 +24,6 @@ class App extends Component {
         >
           {
             cloneElement(this.props.children, {})
-          }
-          {
-            <ArrowUpBtn
-              onHandelUp={App.moveScrollTop}
-            />
           }
         </Grid.Row>
 
