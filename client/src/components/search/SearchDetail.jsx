@@ -12,6 +12,7 @@ import {
   Divider,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import './SearchDetail.css';
 
 const colorMap = {
   'function': 'purple',
@@ -57,7 +58,7 @@ function SearchDetail(props) {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Segment>
+                <Segment className="detail-text">
                   <Table basic="very" celled>
                     <Table.Header>
                       <Table.Row>
@@ -82,7 +83,7 @@ function SearchDetail(props) {
                         <Table.Cell>
                           <Header as="h5">
                             <Header.Content>
-                              Frequency
+                              Freq
                             </Header.Content>
                           </Header>
                         </Table.Cell>
