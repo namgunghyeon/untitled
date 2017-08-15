@@ -7,7 +7,7 @@ const env = get();
 const URL = `${config[env].api.host}:${config[env].api.port}`;
 
 function searchKeywordIndex({ name, offset, limit }, callback) {
-  const params = `{keywordIndex(name:"${name}",offset:${offset},limit:${limit},){Keyword}}`;
+  const params = `{keywordIndex(name:"${name}",offset:${offset},limit:${limit}){Keyword}}`;
   const path = `/graphql?query=${params}`;
   logger.info(URL, path);
   request({ url: URL + path }, (error, response, body) => {

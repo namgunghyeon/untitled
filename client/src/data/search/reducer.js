@@ -27,15 +27,16 @@ export default function searchResults(state = initialState, action) {
         return state;
       }
       const isFirst = state.keyword.offset === 0;
+      const receviedKeywords = action.payload.query.keywordIndex;
       let keywords = [];
       if (isFirst) {
-        keywords = [...action.payload.query.keywordIndex];
+        keywords = [...receviedKeywords];
       } else {
         state.keywords.pop(); // Remove more key
-        keywords = [...state.keywords, ...action.payload.query.keywordIndex];
+        keywords = [...state.keywords, ...receviedKeywords];
       }
       const length = keywords.length;
-      if (length && length === state.keyword.limit) {
+      if (length && receviedKeywords.length) {
         keywords.push({
           reserved: 'more',
         });
