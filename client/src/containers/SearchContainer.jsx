@@ -14,6 +14,8 @@ import {
   SearchActions,
 } from '../data/search';
 
+const LIMIT = 30;
+
 const propTypes = {
   searchKeywords: PropTypes.func.isRequired,
   searchDetailKeyword: PropTypes.func.isRequired,
@@ -70,7 +72,7 @@ class SearchContainer extends Component {
     this.props.searchKeywords({
       name,
       offset: 0,
-      limit: 30,
+      limit: LIMIT,
     });
   }
   onHandleMore() {
@@ -78,7 +80,7 @@ class SearchContainer extends Component {
     this.props.searchKeywords({
       name: keyword.name,
       offset: keywords.length,
-      limit: keywords.length + 30,
+      limit: keywords.length + LIMIT,
     });
   }
   renderBar() {
