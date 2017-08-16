@@ -7,6 +7,14 @@ export default function searchResults(state = initialState, action) {
   switch (action.type) {
     case ActionTypes.SEARCHED_KEWORDS: {
       const keyword = action.payload.keyword;
+      if (!keyword.name) {
+        return {
+          ...state,
+          keywords: [],
+          start: 0,
+          end: 0,
+        };
+      }
       const isFirst = keyword.offset === 0;
       return {
         keyword,
@@ -24,7 +32,11 @@ export default function searchResults(state = initialState, action) {
     }
     case ActionTypes.RECEIVED_KEWORDS: {
       if (!action.payload.query) {
-        return state;
+        return {
+          ...state,
+          isSearch: false,
+          isMoreSearch: false,
+        };
       }
       const isFirst = state.keyword.offset === 0;
       const receviedKeywords = action.payload.query.keywordIndex;
