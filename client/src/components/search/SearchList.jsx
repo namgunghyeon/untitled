@@ -29,6 +29,8 @@ const colorMap = {
   moment: 'blue',
   atom: 'violet',
   electron: 'pink',
+  vue: 'brown',
+  express: 'grey',
 };
 
 function SearchList(props) {
