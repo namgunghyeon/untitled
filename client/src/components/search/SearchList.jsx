@@ -38,6 +38,7 @@ function SearchList(props) {
     onHandleMore,
     isMoreSearch,
     readTime,
+    onHandleUp,
   } = props;
   const onClickItem = (e) => {
     const { id } = e.target;
@@ -113,7 +114,7 @@ function SearchList(props) {
     }
     return (
       <ArrowUpBtn
-        onHandleUp={props.onHandleUp}
+        onHandleUp={onHandleUp}
       />
     );
   };

@@ -23,8 +23,14 @@ const propTypes = {
   onBack: PropTypes.func.isRequired,
   details: PropTypes.object.isRequired,
 };
-
 function SearchDetail(props) {
+  const toPath = (path) => {
+    const paths = path.split('untitled_analysis_test');
+    if (paths.length) {
+      return paths[1];
+    }
+    return path;
+  };
   const renderTabContent = details => (
     <Grid>
       {
@@ -76,7 +82,7 @@ function SearchDetail(props) {
                           </Header>
                         </Table.Cell>
                         <Table.Cell>
-                          { item.Path }
+                          { toPath(item.Path) }
                         </Table.Cell>
                       </Table.Row>
                     </Table.Body>
