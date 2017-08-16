@@ -79,8 +79,8 @@ class SearchContainer extends Component {
     const { keyword, keywords } = this.props;
     this.props.searchKeywords({
       name: keyword.name,
-      offset: keywords.length,
-      limit: keywords.length + LIMIT,
+      offset: keywords.length - 1,
+      limit: LIMIT,
     });
   }
   renderBar() {

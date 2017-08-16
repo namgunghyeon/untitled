@@ -47,8 +47,8 @@ export default function searchResults(state = initialState, action) {
         state.keywords.pop(); // Remove more key
         keywords = [...state.keywords, ...receviedKeywords];
       }
-      const length = keywords.length;
-      if (length && receviedKeywords.length) {
+      const limit = state.keyword.limit;
+      if (receviedKeywords.length >= limit) {
         keywords.push({
           reserved: 'more',
         });

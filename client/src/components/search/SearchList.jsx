@@ -107,6 +107,16 @@ function SearchList(props) {
       </Item.Group>
     );
   };
+  const renderArrowUp = (items) => {
+    if (!items.length) {
+      return (<div />);
+    }
+    return (
+      <ArrowUpBtn
+        onHandleUp={props.onHandleUp}
+      />
+    );
+  };
   return (
     <Grid columns={1}>
       { renderReadTime(readTime) }
@@ -133,9 +143,7 @@ function SearchList(props) {
             }
           </List>
           {
-            <ArrowUpBtn
-              onHandleUp={props.onHandleUp}
-            />
+            renderArrowUp(props.items)
           }
         </Grid.Column>
       </Grid.Row>
