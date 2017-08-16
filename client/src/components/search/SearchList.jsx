@@ -3,11 +3,14 @@ import {
   Grid,
   List,
   Button,
+  Label,
+  Item,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {
   ArrowUpBtn,
 } from '../../components';
+import './SearchList.css';
 
 const propTypes = {
   onHandleMore: PropTypes.func.isRequired,
@@ -15,6 +18,17 @@ const propTypes = {
   items: PropTypes.array.isRequired,
   readTime: PropTypes.number.isRequired,
   isMoreSearch: PropTypes.bool.isRequired,
+};
+
+const colorMap = {
+  angular: 'orange',
+  bootstrap: 'yellow',
+  react: 'olive',
+  meteor: 'green',
+  'Semantic-UI': 'teal',
+  moment: 'blue',
+  atom: 'violet',
+  electron: 'pink',
 };
 
 function SearchList(props) {
@@ -37,6 +51,28 @@ function SearchList(props) {
     }
     return (<div />);
   };
+  const renderItemProject = (project) => {
+    const projects = project ? project.split(',') : [];
+    return projects.map(name => (
+      <Label
+        key={name}
+        color={colorMap[name.trim()]}
+      >
+        {name}
+      </Label>
+    ));
+  };
+  const renderItemKeyword = keyword => (
+    (
+      <List.Header
+        as="a"
+        id={keyword}
+        onClick={onClickItem}
+      >
+        {keyword}
+      </List.Header>
+    )
+  );
   const renderItem = (item) => {
     if (item.reserved) {
       return (
@@ -56,13 +92,14 @@ function SearchList(props) {
       );
     }
     return (
-      <List.Header
-        as="a"
-        id={item.Keyword}
-        onClick={onClickItem}
-      >
-        {item.Keyword}
-      </List.Header>
+      <Item.Group>
+        <Item>
+          {renderItemKeyword(item.Keyword)}
+          <span className="project__label">
+            {renderItemProject(item.Project)}
+          </span>
+        </Item>
+      </Item.Group>
     );
   };
   return (
