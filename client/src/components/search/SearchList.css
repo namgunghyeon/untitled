@@ -1,2 +1,5 @@
+.search__item {
+  margin: 0 !important; }
+
 .project__label {
-  margin-left: 1rem; }
+  margin-right: 1rem; }

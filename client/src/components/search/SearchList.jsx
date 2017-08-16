@@ -57,6 +57,7 @@ function SearchList(props) {
     const projects = project ? project.split(',') : [];
     return projects.map(name => (
       <Label
+        horizontal
         key={name}
         color={colorMap[name.trim()]}
       >
@@ -95,9 +96,11 @@ function SearchList(props) {
     }
     return (
       <Item.Group>
-        <Item>
-          {renderItemKeyword(item.Keyword)}
+        <Item className="search__item">
           <span className="project__label">
+            {renderItemKeyword(item.Keyword)}
+          </span>
+          <span>
             {renderItemProject(item.Project)}
           </span>
         </Item>
