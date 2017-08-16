@@ -79,18 +79,6 @@ function SearchDetail(props) {
                           { item.Path }
                         </Table.Cell>
                       </Table.Row>
-                      <Table.Row>
-                        <Table.Cell>
-                          <Header as="h5">
-                            <Header.Content>
-                              Freq
-                            </Header.Content>
-                          </Header>
-                        </Table.Cell>
-                        <Table.Cell>
-                          { item.frequency }
-                        </Table.Cell>
-                      </Table.Row>
                     </Table.Body>
                   </Table>
                 </Segment>
