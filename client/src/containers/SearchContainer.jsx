@@ -53,6 +53,7 @@ class SearchContainer extends Component {
       ...this.state,
       isItemClicked: status,
     });
+    this.props.changeProject('');
     SearchContainer.moveScrollTop();
     this.props.searchDetailKeyword(value);
   }
