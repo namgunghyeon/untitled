@@ -97,7 +97,7 @@ function SearchList(props) {
           <Button
             fluid
             disabled={isMoreSearch}
-            color="green"
+            color="blue"
           >
             { !isMoreSearch ? 'More' : 'Loading...'}
           </Button>
