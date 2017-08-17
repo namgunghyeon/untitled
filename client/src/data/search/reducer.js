@@ -70,6 +70,13 @@ export default function searchResults(state = initialState, action) {
         isMoreSearch: false,
       };
     }
+    case ActionTypes.CHANGE_PROJECT_DETAIL: {
+      const project = action.payload.project;
+      return {
+        ...state,
+        currentProject: project,
+      };
+    }
     default:
       return state;
   }

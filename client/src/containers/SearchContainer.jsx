@@ -19,12 +19,14 @@ const LIMIT = 30;
 const propTypes = {
   searchKeywords: PropTypes.func.isRequired,
   searchDetailKeyword: PropTypes.func.isRequired,
+  changeProject: PropTypes.func.isRequired,
   keywords: PropTypes.array.isRequired,
   detailKeywordMap: PropTypes.object.isRequired,
   keyword: PropTypes.object.isRequired,
   isSearch: PropTypes.bool.isRequired,
   isMoreSearch: PropTypes.bool.isRequired,
   readTime: PropTypes.number.isRequired,
+  currentProject: PropTypes.string.isRequired,
 };
 
 class SearchContainer extends Component {
@@ -95,6 +97,8 @@ class SearchContainer extends Component {
       keywords,
       isMoreSearch,
       readTime,
+      changeProject,
+      currentProject,
     } = this.props;
     return (
       !isItemClicked ?
@@ -110,6 +114,8 @@ class SearchContainer extends Component {
         <SearchDetail
           onBack={this.onClickBack}
           details={this.props.detailKeywordMap}
+          onChangeProject={changeProject}
+          currentProject={currentProject}
         />
     );
   }
@@ -139,6 +145,7 @@ function mapStateToProps(state) {
     isMoreSearch: SearchSelectors.getIsMoreSearching(state),
     readTime: SearchSelectors.getReadTime(state),
     keyword: SearchSelectors.getKeyword(state),
+    currentProject: SearchSelectors.getCurrentProject(state),
   };
 }
 

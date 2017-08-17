@@ -36,9 +36,17 @@ export function receiveDetailKeyword(query) {
   };
 }
 
-
 export function clearSearchResults() {
   return {
     type: ActionTypes.CLEARED_SEARCH_RESULTS,
+  };
+}
+
+export function changeProject(project) {
+  return {
+    type: ActionTypes.CHANGE_PROJECT_DETAIL,
+    payload: {
+      project,
+    },
   };
 }

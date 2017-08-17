@@ -8,8 +8,7 @@ import {
   Segment,
   Label,
   Table,
-  Tab,
-  Divider,
+  Dropdown,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import './SearchDetail.css';
@@ -21,9 +20,14 @@ const colorMap = {
 
 const propTypes = {
   onBack: PropTypes.func.isRequired,
+  onChangeProject: PropTypes.func.isRequired,
   details: PropTypes.object.isRequired,
+  currentProject: PropTypes.string.isRequired,
 };
 function SearchDetail(props) {
+  const {
+    currentProject,
+  } = props;
   const toPath = (path) => {
     const paths = path.split('untitled_analysis_test');
     if (paths.length) {
@@ -31,78 +35,95 @@ function SearchDetail(props) {
     }
     return path;
   };
-  const renderTabContent = details => (
-    <Grid>
+  const buildOptions = (details) => {
+    const projects = Object.keys(details);
+    return projects.map(project => (
       {
-        details.map(item => (
-          <div
-            key={`${item.KeywordIndex}_${item.Project}_${item.Type}`}
-            style={{
-              width: '100%',
-              paddingTop: '2rem',
-              paddingLeft: '2rem',
-              paddingRight: '2rem',
-            }}
-          >
-            <Grid.Row
+        key: project,
+        text: project,
+        value: project,
+      }
+    ));
+  };
+  const onChangeMenu = (event, data) => {
+    props.onChangeProject(data.value);
+  };
+  const renderProjectMenu = (details) => {
+    const options = buildOptions(details);
+    return (
+      <Dropdown
+        selection
+        onChange={onChangeMenu}
+        text={currentProject || options[0].value}
+        options={options}
+      />
+    );
+  };
+  const renderContents = (details) => {
+    const options = buildOptions(details);
+    const contents = details[currentProject || options[0].value];
+    return (
+      <Grid>
+        {
+          contents.map(item => (
+            <div
+              key={`${item.KeywordIndex}_${item.Project}_${item.Type}`}
               style={{
-                marginBottom: '1rem',
+                width: '100%',
+                paddingTop: '2rem',
               }}
             >
-              <Grid.Column>
-                <List.Item>
-                  <Label
-                    color={colorMap[item.Type]}
-                    size="large"
-                    horizontal
-                  >
-                    { item.Type }
-                  </Label>
-                  { item.name }
-                </List.Item>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column>
-                <Segment className="detail-text">
-                  <Table basic="very" celled>
-                    <Table.Header>
-                      <Table.Row>
-                        <Table.HeaderCell>Name</Table.HeaderCell>
-                        <Table.HeaderCell>{ item.KeywordIndex }</Table.HeaderCell>
-                      </Table.Row>
-                    </Table.Header>
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell collapsing>
-                          <Header as="h5">
-                            <Header.Content>
-                              Location
-                            </Header.Content>
-                          </Header>
-                        </Table.Cell>
-                        <Table.Cell>
-                          { toPath(item.Path) }
-                        </Table.Cell>
-                      </Table.Row>
-                    </Table.Body>
-                  </Table>
-                </Segment>
-              </Grid.Column>
-            </Grid.Row>
-            <Divider />
-          </div>
-        ))
-      }
-    </Grid>
-  );
-  const buildTabPanels = (details) => {
-    const projects = Object.keys(details);
-    return projects.map(name => ({
-      menuItem: name,
-      render: () =>
-        <Tab.Pane attached={false}>{ renderTabContent(details[name]) }</Tab.Pane>,
-    }));
+              <Grid.Row
+                style={{
+                  marginBottom: '1rem',
+                }}
+              >
+                <Grid.Column>
+                  <List.Item>
+                    <Label
+                      color={colorMap[item.Type]}
+                      size="large"
+                      horizontal
+                    >
+                      { item.Type }
+                    </Label>
+                    { item.name }
+                  </List.Item>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column>
+                  <Segment className="detail-text">
+                    <Table basic="very" celled>
+                      <Table.Header>
+                        <Table.Row>
+                          <Table.HeaderCell>Name</Table.HeaderCell>
+                          <Table.HeaderCell>{ item.KeywordIndex }</Table.HeaderCell>
+                        </Table.Row>
+                      </Table.Header>
+                      <Table.Body>
+                        <Table.Row>
+                          <Table.Cell collapsing>
+                            <Header as="h5">
+                              <Header.Content>
+                                Location
+                              </Header.Content>
+                            </Header>
+                          </Table.Cell>
+                          <Table.Cell>
+                            { toPath(item.Path) }
+                          </Table.Cell>
+                        </Table.Row>
+                      </Table.Body>
+                    </Table>
+                  </Segment>
+                </Grid.Column>
+              </Grid.Row>
+            </div>
+          ))
+        }
+      </Grid>
+    );
   };
   return (
     <Grid columns={1}>
@@ -121,10 +142,10 @@ function SearchDetail(props) {
           </Button>
         </Grid.Column>
         <Grid.Column>
-          <Tab
-            menu={{ secondary: true, pointing: true }}
-            panes={buildTabPanels(props.details)}
-          />
+          { renderProjectMenu(props.details) }
+        </Grid.Column>
+        <Grid.Column>
+          { renderContents(props.details) }
         </Grid.Column>
       </Grid.Row>
     </Grid>

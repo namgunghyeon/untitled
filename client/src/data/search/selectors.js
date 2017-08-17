@@ -17,3 +17,4 @@ export const getReadTime = (state) => {
   return end - start;
 };
 export const getKeyword = state => state.search.keyword;
+export const getCurrentProject = state => state.search.currentProject;
