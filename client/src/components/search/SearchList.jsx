@@ -22,15 +22,21 @@ const propTypes = {
 
 const colorMap = {
   angular: 'orange',
-  bootstrap: 'yellow',
+  bootstrap: '#CF6E36',
   react: 'olive',
   meteor: 'green',
   'Semantic-UI': 'teal',
   moment: 'blue',
-  atom: 'violet',
-  electron: 'pink',
+  atom: '#476600',
+  electron: '#F15F5F',
   vue: 'brown',
   express: 'grey',
+  backbone: 'black',
+  brackets: '#D941C5',
+  'foundation-sites': '#27248A',
+  'ember.js': '#CC723D',
+  'json-server': '#007087',
+  lodash: '#99004C',
 };
 
 function SearchList(props) {
@@ -60,7 +66,10 @@ function SearchList(props) {
       <Label
         horizontal
         key={name}
-        color={colorMap[name.trim()]}
+        style={{
+          background: colorMap[name.trim()],
+          color: 'white',
+        }}
       >
         {name}
       </Label>
