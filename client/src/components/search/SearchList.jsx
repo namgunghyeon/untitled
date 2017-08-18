@@ -87,7 +87,7 @@ function SearchList(props) {
     )
   );
   const renderItem = (item) => {
-    if (item.reserved) {
+    if (item.loading) {
       return (
         <List.Header
           as="a"

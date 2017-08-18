@@ -1,6 +1,16 @@
 import moment from 'moment-timezone';
-
 import * as ActionTypes from './actionTypes';
+
+function filterValidateKeyword(keywordIndex) {
+  return keywordIndex.filter((item) => {
+    if (item.Keyword.indexOf('"') >= 0 ||
+        item.Keyword.indexOf("'") >= 0 ||
+        item.Keyword.indexOf(',') >= 0) {
+      return false;
+    }
+    return true;
+  });
+}
 
 const initialState = [];
 export default function searchResults(state = initialState, action) {
@@ -50,12 +60,14 @@ export default function searchResults(state = initialState, action) {
       const limit = state.keyword.limit;
       if (receviedKeywords.length >= limit) {
         keywords.push({
-          reserved: 'more',
+          loading: true,
+          Keyword: '',
+          Project: '',
         });
       }
       return {
         ...state,
-        keywords,
+        keywords: filterValidateKeyword(keywords),
         isSearch: false,
         isMoreSearch: false,
         end: moment().valueOf(),
