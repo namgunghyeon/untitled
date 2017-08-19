@@ -1,52 +1,9 @@
+import { createAction } from 'redux-actions';
 import * as ActionTypes from './actionTypes';
 
-export function searchKeywords(keyword) {
-  return {
-    type: ActionTypes.SEARCHED_KEWORDS,
-    payload: {
-      keyword,
-    },
-  };
-}
-
-export function searchDetailKeyword(keyword) {
-  return {
-    type: ActionTypes.SEARCHED_DETAIL_KEYWORD,
-    payload: {
-      keyword,
-    },
-  };
-}
-
-export function receiveKeywords(query) {
-  return {
-    type: ActionTypes.RECEIVED_KEWORDS,
-    payload: {
-      query,
-    },
-  };
-}
-
-export function receiveDetailKeyword(query) {
-  return {
-    type: ActionTypes.RECEIVED_DETAIL_KEYWORDS,
-    payload: {
-      query,
-    },
-  };
-}
-
-export function clearSearchResults() {
-  return {
-    type: ActionTypes.CLEARED_SEARCH_RESULTS,
-  };
-}
-
-export function changeProject(project) {
-  return {
-    type: ActionTypes.CHANGE_PROJECT_DETAIL,
-    payload: {
-      project,
-    },
-  };
-}
+export const searchKeywords = createAction(ActionTypes.SEARCHED_KEWORDS);
+export const searchDetailKeyword = createAction(ActionTypes.SEARCHED_DETAIL_KEYWORD);
+export const receiveKeywords = createAction(ActionTypes.RECEIVED_KEWORDS);
+export const receiveDetailKeyword = createAction(ActionTypes.RECEIVED_DETAIL_KEYWORDS);
+export const clearSearchResults = createAction(ActionTypes.CLEARED_SEARCH_RESULTS);
+export const changeProject = createAction(ActionTypes.CHANGE_PROJECT_DETAIL);

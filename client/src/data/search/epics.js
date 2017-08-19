@@ -5,7 +5,7 @@ import { receiveKeywords, receiveDetailKeyword } from './actions';
 
 export function searchKeywords(action$) {
   return action$.ofType(ActionTypes.SEARCHED_KEWORDS)
-  .map(action => action.payload.keyword)
+  .map(action => action.payload)
   .filter(keyword => !!keyword)
   .debounceTime(300)
   .switchMap(keyword =>
@@ -21,7 +21,7 @@ export function searchKeywords(action$) {
 
 export function searchDetailKeyword(action$) {
   return action$.ofType(ActionTypes.SEARCHED_DETAIL_KEYWORD)
-  .map(action => action.payload.keyword)
+  .map(action => action.payload)
   .filter(keyword => !!keyword)
   .switchMap(keyword => ajax.getJSON(`api/search/detail?name=${keyword}`)
   .map(res => res.data)

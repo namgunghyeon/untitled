@@ -16,7 +16,7 @@ const initialState = [];
 export default function searchResults(state = initialState, action) {
   switch (action.type) {
     case ActionTypes.SEARCHED_KEWORDS: {
-      const keyword = action.payload.keyword;
+      const keyword = action.payload;
       if (!keyword.name) {
         return {
           ...state,
@@ -41,7 +41,7 @@ export default function searchResults(state = initialState, action) {
       };
     }
     case ActionTypes.RECEIVED_KEWORDS: {
-      if (!action.payload.query) {
+      if (!action.payload) {
         return {
           ...state,
           isSearch: false,
@@ -49,7 +49,7 @@ export default function searchResults(state = initialState, action) {
         };
       }
       const isFirst = state.keyword.offset === 0;
-      const receviedKeywords = action.payload.query.keywordIndex;
+      const receviedKeywords = action.payload.keywordIndex;
       let keywords = [];
       if (isFirst) {
         keywords = [...receviedKeywords];
@@ -74,7 +74,7 @@ export default function searchResults(state = initialState, action) {
       };
     }
     case ActionTypes.RECEIVED_DETAIL_KEYWORDS: {
-      const detailKeywords = [...action.payload.query.keyword];
+      const detailKeywords = [...action.payload.keyword];
       return {
         ...state,
         detailKeywords,
@@ -83,7 +83,7 @@ export default function searchResults(state = initialState, action) {
       };
     }
     case ActionTypes.CHANGE_PROJECT_DETAIL: {
-      const project = action.payload.project;
+      const project = action.payload;
       return {
         ...state,
         currentProject: project,
