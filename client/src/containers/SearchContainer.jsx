@@ -13,16 +13,22 @@ import {
   SearchSelectors,
   SearchActions,
 } from '../data/search';
+import {
+  PageSelectors,
+  PageActions,
+} from '../data/page';
 
 const LIMIT = 30;
 
 const propTypes = {
+  setScrollPosition: PropTypes.func.isRequired,
   searchKeywords: PropTypes.func.isRequired,
   searchDetailKeyword: PropTypes.func.isRequired,
   changeProject: PropTypes.func.isRequired,
   keywords: PropTypes.array.isRequired,
   detailKeywordMap: PropTypes.object.isRequired,
   keyword: PropTypes.object.isRequired,
+  scrollPosition: PropTypes.object.isRequired,
   isSearch: PropTypes.bool.isRequired,
   isMoreSearch: PropTypes.bool.isRequired,
   readTime: PropTypes.number.isRequired,
@@ -30,8 +36,11 @@ const propTypes = {
 };
 
 class SearchContainer extends Component {
-  static moveScrollTop() {
-    window.scrollTo(0, 0);
+  static moveScrollTo(pageXOffset, pageYOffset) {
+    if (pageYOffset && pageYOffset) {
+      return window.scrollTo(pageYOffset, pageYOffset);
+    }
+    return window.scrollTo(0, 0);
   }
   constructor(props) {
     super(props);
@@ -53,16 +62,26 @@ class SearchContainer extends Component {
       ...this.state,
       isItemClicked: status,
     });
+    const {
+      pageXOffset,
+      pageYOffset,
+    } = window;
+    this.props.setScrollPosition({ pageXOffset, pageYOffset });
     this.props.changeProject('');
-    SearchContainer.moveScrollTop();
     this.props.searchDetailKeyword(value);
+    SearchContainer.moveScrollTo(0, 0);
   }
   onClickBack() {
     this.setState({
       ...this.state,
       isItemClicked: false,
+    }, () => {
+      const {
+        pageXOffset,
+        pageYOffset,
+      } = this.props.scrollPosition;
+      SearchContainer.moveScrollTo(pageXOffset, pageYOffset);
     });
-    SearchContainer.moveScrollTop();
   }
   onHandelSaerch(e, data) {
     const name = data.value;
@@ -108,7 +127,7 @@ class SearchContainer extends Component {
           readTime={readTime}
           onClickItem={this.onClickItem}
           onHandleMore={this.onHandleMore}
-          onHandleUp={SearchContainer.moveScrollTop}
+          onHandleUp={SearchContainer.moveScrollTo}
           isMoreSearch={isMoreSearch}
         />
       :
@@ -147,12 +166,14 @@ function mapStateToProps(state) {
     readTime: SearchSelectors.getReadTime(state),
     keyword: SearchSelectors.getKeyword(state),
     currentProject: SearchSelectors.getCurrentProject(state),
+    scrollPosition: PageSelectors.getScrollPosition(state),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     ...SearchActions,
+    ...PageActions,
   }, dispatch);
 }
 
