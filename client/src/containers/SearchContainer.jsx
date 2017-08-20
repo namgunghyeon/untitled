@@ -36,9 +36,9 @@ const propTypes = {
 };
 
 class SearchContainer extends Component {
-  static changeScrollPosition(pageXOffset, pageYOffset) {
-    if (pageYOffset && pageYOffset) {
-      return window.scrollTo(pageYOffset, pageYOffset);
+  static changeScrollPositionY(pageYOffset) {
+    if (pageYOffset) {
+      return window.scrollTo(0, pageYOffset);
     }
     return window.scrollTo(0, 0);
   }
@@ -69,7 +69,7 @@ class SearchContainer extends Component {
     this.props.setScrollPosition({ pageXOffset, pageYOffset });
     this.props.changeProject('');
     this.props.searchDetailKeyword(value);
-    SearchContainer.changeScrollPosition(0, 0);
+    SearchContainer.changeScrollPositionY(0);
   }
   onClickBack() {
     this.setState({
@@ -77,10 +77,9 @@ class SearchContainer extends Component {
       isItemClicked: false,
     }, () => {
       const {
-        pageXOffset,
         pageYOffset,
       } = this.props.scrollPosition;
-      SearchContainer.changeScrollPosition(pageXOffset, pageYOffset);
+      SearchContainer.changeScrollPositionY(pageYOffset);
     });
   }
   onHandelSaerch(e, data) {
@@ -127,7 +126,7 @@ class SearchContainer extends Component {
           readTime={readTime}
           onClickItem={this.onClickItem}
           onHandleMore={this.onHandleMore}
-          onHandleUp={SearchContainer.changeScrollPosition}
+          onHandleUp={SearchContainer.changeScrollPositionY}
           isMoreSearch={isMoreSearch}
         />
       :
