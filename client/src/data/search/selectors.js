@@ -18,4 +18,10 @@ export const getReadTime = (state) => {
 };
 export const getKeyword = state => state.search.keyword;
 export const getCurrentProject = state => state.search.currentProject;
-export const getProjects = state => state.search.projects;
+export const getProjectColorMap = (state) => {
+  if (state.search.projects) {
+    const projects = [...state.search.projects];
+    return _.groupBy(projects, 'Name');
+  }
+  return {};
+};

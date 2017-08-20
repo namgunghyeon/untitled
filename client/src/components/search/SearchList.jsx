@@ -18,7 +18,7 @@ const propTypes = {
   onHandleMore: PropTypes.func.isRequired,
   onHandleUp: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
-  projects: PropTypes.array.isRequired,
+  colorMap: PropTypes.object.isRequired,
   readTime: PropTypes.number.isRequired,
   isMoreSearch: PropTypes.bool.isRequired,
 };
@@ -29,7 +29,7 @@ function SearchList(props) {
     isMoreSearch,
     readTime,
     onHandleUp,
-    projects,
+    colorMap,
   } = props;
   const onClickItem = (e) => {
     const { id } = e.target;
@@ -46,8 +46,8 @@ function SearchList(props) {
     return (<div />);
   };
   const findProjectColor = (name) => {
-    const found = projects.find(project => project.Name === name);
-    return found ? found.Color : '';
+    const project = colorMap[name.trim()][0];
+    return project ? project.Color : '';
   };
   const renderItemProject = (project) => {
     const projectNames = project ? project.split(',') : [];

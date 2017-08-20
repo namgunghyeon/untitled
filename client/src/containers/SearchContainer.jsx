@@ -29,7 +29,7 @@ const propTypes = {
   detailKeywordMap: PropTypes.object.isRequired,
   keyword: PropTypes.object.isRequired,
   scrollPosition: PropTypes.object.isRequired,
-  projects: PropTypes.array.isRequired,
+  colorMap: PropTypes.object.isRequired,
   isSearch: PropTypes.bool.isRequired,
   isMoreSearch: PropTypes.bool.isRequired,
   readTime: PropTypes.number.isRequired,
@@ -119,13 +119,13 @@ class SearchContainer extends Component {
       readTime,
       changeProject,
       currentProject,
-      projects,
+      colorMap,
     } = this.props;
     return (
       !isItemClicked ?
         <SearchList
           items={keywords}
-          projects={projects}
+          colorMap={colorMap}
           readTime={readTime}
           onClickItem={this.onClickItem}
           onHandleMore={this.onHandleMore}
@@ -169,7 +169,7 @@ function mapStateToProps(state) {
     keyword: SearchSelectors.getKeyword(state),
     currentProject: SearchSelectors.getCurrentProject(state),
     scrollPosition: PageSelectors.getScrollPosition(state),
-    projects: SearchSelectors.getProjects(state),
+    colorMap: SearchSelectors.getProjectColorMap(state),
   };
 }
 
