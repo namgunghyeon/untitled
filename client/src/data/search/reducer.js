@@ -26,6 +26,7 @@ const reducer = handleActions({
     }
     const isFirst = keyword.offset === 0;
     return {
+      ...state,
       keyword,
       isSearch: isFirst,
       isMoreSearch: !isFirst,
@@ -86,6 +87,14 @@ const reducer = handleActions({
       currentProject: project,
     };
   },
+  [ActionTypes.FETCH_SUCCESS_PROJECTS]: (state, action) => {
+    const projects = [...action.payload.projects];
+    return {
+      ...state,
+      projects,
+    };
+  },
+  [ActionTypes.FETCH_PROJECTS]: state => ({ ...state }),
 }, {});
 
 export default reducer;

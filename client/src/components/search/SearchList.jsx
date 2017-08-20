@@ -18,27 +18,9 @@ const propTypes = {
   onHandleMore: PropTypes.func.isRequired,
   onHandleUp: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
+  projects: PropTypes.array.isRequired,
   readTime: PropTypes.number.isRequired,
   isMoreSearch: PropTypes.bool.isRequired,
-};
-
-const colorMap = {
-  angular: 'orange',
-  bootstrap: '#CF6E36',
-  react: 'olive',
-  meteor: 'green',
-  'Semantic-UI': 'teal',
-  moment: 'blue',
-  atom: '#476600',
-  electron: '#F15F5F',
-  vue: 'brown',
-  express: 'grey',
-  backbone: 'black',
-  brackets: '#D941C5',
-  'foundation-sites': '#27248A',
-  'ember.js': '#CC723D',
-  'json-server': '#007087',
-  lodash: '#99004C',
 };
 
 function SearchList(props) {
@@ -47,6 +29,7 @@ function SearchList(props) {
     isMoreSearch,
     readTime,
     onHandleUp,
+    projects,
   } = props;
   const onClickItem = (e) => {
     const { id } = e.target;
@@ -62,14 +45,18 @@ function SearchList(props) {
     }
     return (<div />);
   };
+  const findProjectColor = (name) => {
+    const found = projects.find(project => project.Name === name);
+    return found ? found.Color : '';
+  };
   const renderItemProject = (project) => {
-    const projects = project ? project.split(',') : [];
-    return projects.map(name => (
+    const projectNames = project ? project.split(',') : [];
+    return projectNames.map(name => (
       <Label
         horizontal
         key={name}
         style={{
-          background: colorMap[name.trim()],
+          background: findProjectColor(name.trim()),
           color: 'white',
         }}
       >
