@@ -7,11 +7,13 @@ import {
   Item,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 import {
   ArrowUpBtn,
 } from '../../components';
-import './SearchList.css';
+import styles from './SearchList.css';
 
+const cx = classNames.bind(styles);
 const propTypes = {
   onHandleMore: PropTypes.func.isRequired,
   onHandleUp: PropTypes.func.isRequired,
@@ -106,8 +108,8 @@ function SearchList(props) {
     }
     return (
       <Item.Group>
-        <Item className="search__item">
-          <span className="project__label">
+        <Item className={cx('search__item')}>
+          <span className={cx('project__label')}>
             {renderItemKeyword(item.Keyword)}
           </span>
           <span>

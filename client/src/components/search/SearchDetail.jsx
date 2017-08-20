@@ -11,8 +11,10 @@ import {
   Dropdown,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import './SearchDetail.css';
+import classNames from 'classnames/bind';
+import styles from './SearchDetail.css';
 
+const cx = classNames.bind(styles);
 const colorMap = {
   'function': 'purple',
   value: 'green',
@@ -93,7 +95,7 @@ function SearchDetail(props) {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  <Segment className="detail-text">
+                  <Segment className={cx('detail-text')}>
                     <Table basic="very" celled>
                       <Table.Header>
                         <Table.Row>

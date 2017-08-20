@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "classnames": "^2.2.5",
         "history": "^2.1.2",
         "lodash": "^4.17.4",
         "moment-timezone": "^0.5.13",

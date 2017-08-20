@@ -1,8 +1,10 @@
 import React from 'react';
 import { Grid, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
+import styles from './ArrowUpBtn.css';
 
-import './ArrowUpBtn.css';
+const cx = classNames.bind(styles);
 
 const propTypes = {
   onHandleUp: PropTypes.func.isRequired,
@@ -17,7 +19,7 @@ function ArrowUpBtn(props) {
         }}
       >
         <Grid.Column>
-          <div className="up-btn">
+          <div className={cx('up-btn')}>
             <Button
               circular
               color="yellow"
