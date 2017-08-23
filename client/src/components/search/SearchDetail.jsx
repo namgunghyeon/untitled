@@ -70,10 +70,7 @@ function SearchDetail(props) {
           contents.map(item => (
             <div
               key={`${item.KeywordIndex}_${item.Project}_${item.Type}`}
-              style={{
-                width: '100%',
-                paddingTop: '2rem',
-              }}
+              className={cx('contents')}
             >
               <Grid.Row
                 style={{
@@ -95,7 +92,7 @@ function SearchDetail(props) {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  <Segment className={cx('detail-text')}>
+                  <Segment className={cx('text')}>
                     <Table basic="very" celled>
                       <Table.Header>
                         <Table.Row>
@@ -129,11 +126,11 @@ function SearchDetail(props) {
   };
   return (
     <Grid columns={1}>
-      <Grid.Row>
+      <Grid.Row
+        className={cx('detail')}
+      >
         <Grid.Column
-          style={{
-            paddingBottom: '2rem',
-          }}
+          className={cx('back')}
         >
           <Button
             primary

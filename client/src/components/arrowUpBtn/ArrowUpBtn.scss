@@ -1,6 +1,9 @@
-.up-btn {
-  position: fixed;
-  bottom: 7rem;
-  right: 0;
-  width: 5rem;
+.up {
+  padding-top: 2rem;
+  .btn {
+    position: fixed;
+    bottom: 7rem;
+    right: 0;
+    width: 5rem;
+  }
 }

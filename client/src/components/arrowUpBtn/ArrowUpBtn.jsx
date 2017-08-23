@@ -14,21 +14,21 @@ function ArrowUpBtn(props) {
   return (
     <Grid columns={1}>
       <Grid.Row
-        style={{
-          paddingTop: '2rem',
-        }}
+        className={cx('up')}
       >
         <Grid.Column>
-          <div className={cx('up-btn')}>
-            <Button
-              circular
-              color="yellow"
-              icon={
-                <Icon name="arrow up" size="big" />
-              }
-              onClick={props.onHandleUp}
-            />
-          </div>
+          <Button
+            circular
+            color="yellow"
+            icon={
+              <Icon
+                name="arrow up"
+                size="big"
+              />
+            }
+            className={cx('btn')}
+            onClick={props.onHandleUp}
+          />
         </Grid.Column>
       </Grid.Row>
     </Grid>

@@ -1,2 +1,9 @@
-.detail-text {
+.detail .back {
+  padding-bottom: 2rem; }
+
+.detail .contents {
+  width: 100%;
+  padding-top: 2rem; }
+
+.detail .contents .text {
   word-break: break-all; }

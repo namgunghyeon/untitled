@@ -95,8 +95,8 @@ function SearchList(props) {
     }
     return (
       <Item.Group>
-        <Item className={cx('search__item')}>
-          <span className={cx('project__label')}>
+        <Item className={cx('item')}>
+          <span className={cx('label')}>
             {renderItemKeyword(item.Keyword)}
           </span>
           <span>
@@ -125,6 +125,7 @@ function SearchList(props) {
             divided
             relaxed
             size="huge"
+            className={cx('list')}
           >
             {
               props.items.map(item => (

@@ -1,5 +1,5 @@
-.search__item {
+.list .item {
   margin: 0 !important; }
 
-.project__label {
+.list .item .label {
   margin-right: 1rem; }
