@@ -36,7 +36,7 @@ function SearchList(props) {
     props.onClickItem(true, id);
   };
   const renderReadTime = () => {
-    if (readTime) {
+    if (readTime > 0) {
       return (
         <div>
           { `${readTime / 1000} Sec` }

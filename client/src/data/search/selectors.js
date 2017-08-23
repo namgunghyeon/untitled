@@ -14,7 +14,7 @@ export const getDetailKeyowrdMap = (state) => {
 export const getReadTime = (state) => {
   const start = state.search.start;
   const end = state.search.end;
-  return end - start;
+  return (start && end) ? end - start : 0;
 };
 export const getKeyword = state => state.search.keyword;
 export const getCurrentProject = state => state.search.currentProject;
