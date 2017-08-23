@@ -73,9 +73,7 @@ function SearchDetail(props) {
               className={cx('contents')}
             >
               <Grid.Row
-                style={{
-                  marginBottom: '1rem',
-                }}
+                className={cx('type')}
               >
                 <Grid.Column>
                   <List.Item>

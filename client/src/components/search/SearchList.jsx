@@ -55,9 +55,9 @@ function SearchList(props) {
       <Label
         horizontal
         key={name}
+        className={cx('project')}
         style={{
           background: findProjectColor(name.trim()),
-          color: 'white',
         }}
       >
         {name}
@@ -96,7 +96,7 @@ function SearchList(props) {
     return (
       <Item.Group>
         <Item className={cx('item')}>
-          <span className={cx('label')}>
+          <span className={cx('keyword')}>
             {renderItemKeyword(item.Keyword)}
           </span>
           <span>
@@ -131,9 +131,7 @@ function SearchList(props) {
               props.items.map(item => (
                 <List.Item
                   key={item.Keyword}
-                  style={{
-                    paddingBottom: '1rem',
-                  }}
+                  className={cx('contents')}
                 >
                   <List.Content>
                     { renderItem(item) }
