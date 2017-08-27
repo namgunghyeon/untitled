@@ -1,9 +1,9 @@
 .up {
   padding-top: 2rem;
   .btn {
-    position: absolute;
-    bottom: 2rem;
-    right: 0;
+    position: fixed;
+    bottom: 0;
+    right: 1rem;
     width: 5rem;
   }
 }
