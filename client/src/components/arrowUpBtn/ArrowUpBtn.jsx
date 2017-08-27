@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Button, Icon } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import UpIcon from 'react-icons/lib/fa/caret-up';
