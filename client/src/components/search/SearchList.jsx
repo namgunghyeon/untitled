@@ -139,10 +139,11 @@ function SearchList(props) {
                 </List.Item>
               ))
             }
+            {
+              renderArrowUp(props.items)
+            }
           </List>
-          {
-            renderArrowUp(props.items)
-          }
+
         </Grid.Column>
       </Grid.Row>
 

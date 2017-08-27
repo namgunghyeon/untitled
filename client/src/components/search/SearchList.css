@@ -1,8 +1,6 @@
 .list .contents .item {
   margin: 0 !important; }
-
-.list .contents .item .keyword {
-  margin-right: 1rem; }
-
-.list .contents .item .project {
-  color: white; }
+  .list .contents .item .keyword {
+    margin-right: 1rem; }
+  .list .contents .item .project {
+    color: white; }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import UpIcon from 'react-icons/lib/fa/caret-up';
 import styles from './ArrowUpBtn.css';
 
 const cx = classNames.bind(styles);
@@ -17,15 +18,9 @@ function ArrowUpBtn(props) {
         className={cx('up')}
       >
         <Grid.Column>
-          <Button
-            circular
-            color="yellow"
-            icon={
-              <Icon
-                name="arrow up"
-                size="big"
-              />
-            }
+          <UpIcon
+            size={100}
+            color="gray"
             className={cx('btn')}
             onClick={props.onHandleUp}
           />
