@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import Header from '../components/organisms/Header';
+import {
+  SearchActions,
+} from '../data/search';
+
+const propTypes = {
+  fetchProjects: PropTypes.func.isRequired,
+};
 
 class HeaderContainer extends Component {
   static moveScrollTop() {
@@ -11,6 +21,9 @@ class HeaderContainer extends Component {
       isSettingOpen: false,
     };
     this.onClickSettingToogle = this.onClickSettingToogle.bind(this);
+  }
+  componentDidMount() {
+    this.props.fetchProjects();
   }
   onClickSettingToogle(status) {
     this.setState({
@@ -35,4 +48,10 @@ class HeaderContainer extends Component {
   }
 }
 
-export default HeaderContainer;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    ...SearchActions,
+  }, dispatch);
+}
+HeaderContainer.propTypes = propTypes;
+export default connect(null, mapDispatchToProps)(HeaderContainer);

@@ -4,7 +4,7 @@ import 'rxjs';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import 'semantic-ui-css/semantic.min.css';
-import Root from './containers/Root';
+import App from './components/App';
 import configureStore from './configureStore';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -15,7 +15,7 @@ const history = syncHistoryWithStore(
 );
 
 ReactDOM.render(
-  <Root
+  <App
     store={store}
     history={history}
   />,
