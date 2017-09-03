@@ -1,13 +1,19 @@
 import React from 'react';
-import {
-  Grid,
-  List,
-  Button,
-  Label,
-  Item,
-} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+
+import Grid from '../atoms/Grid';
+import GridColumn from '../atoms/GridColumn';
+import GridRow from '../atoms/GridRow';
+import Button from '../atoms/Button';
+import Label from '../atoms/Label';
+import Item from '../atoms/Item';
+import ItemGroup from '../atoms/ItemGroup';
+import List from '../atoms/List';
+import ListHeader from '../atoms/ListHeader';
+import ListContent from '../atoms/ListContent';
+import ListItem from '../atoms/ListItem';
+
 import {
   ArrowUpBtn,
 } from '../../components';
@@ -66,19 +72,19 @@ function SearchList(props) {
   };
   const renderItemKeyword = keyword => (
     (
-      <List.Header
+      <ListHeader
         as="a"
         id={keyword}
         onClick={onClickItem}
       >
         {keyword}
-      </List.Header>
+      </ListHeader>
     )
   );
   const renderItem = (item) => {
     if (item.loading) {
       return (
-        <List.Header
+        <ListHeader
           as="a"
           id={item.Keyword}
           onClick={onHandleMore}
@@ -90,11 +96,11 @@ function SearchList(props) {
           >
             { !isMoreSearch ? 'More' : 'Loading...'}
           </Button>
-        </List.Header>
+        </ListHeader>
       );
     }
     return (
-      <Item.Group>
+      <ItemGroup>
         <Item className={cx('item')}>
           <span className={cx('keyword')}>
             {renderItemKeyword(item.Keyword)}
@@ -103,7 +109,7 @@ function SearchList(props) {
             {renderItemProject(item.Project)}
           </span>
         </Item>
-      </Item.Group>
+      </ItemGroup>
     );
   };
   const renderArrowUp = (items) => {
@@ -119,8 +125,8 @@ function SearchList(props) {
   return (
     <Grid columns={1}>
       { renderReadTime(readTime) }
-      <Grid.Row>
-        <Grid.Column>
+      <GridRow>
+        <GridColumn>
           <List
             divided
             relaxed
@@ -129,14 +135,14 @@ function SearchList(props) {
           >
             {
               props.items.map(item => (
-                <List.Item
+                <ListItem
                   key={item.Keyword}
                   className={cx('contents')}
                 >
-                  <List.Content>
+                  <ListContent>
                     { renderItem(item) }
-                  </List.Content>
-                </List.Item>
+                  </ListContent>
+                </ListItem>
               ))
             }
             {
@@ -144,8 +150,8 @@ function SearchList(props) {
             }
           </List>
 
-        </Grid.Column>
-      </Grid.Row>
+        </GridColumn>
+      </GridRow>
 
     </Grid>
   );

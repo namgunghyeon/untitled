@@ -1,9 +1,9 @@
 import React from 'react';
-import {
-  Grid,
-  Menu,
-} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import Grid from '../atoms/Grid';
+import GridRow from '../atoms/GridRow';
+import GridColumn from '../atoms/GridColumn';
+import Menu from '../atoms/Menu';
 
 const propTypes = {
   onSettingToggle: PropTypes.func.isRequired,
@@ -13,8 +13,8 @@ const propTypes = {
 function Header() {
   return (
     <Grid columns={1}>
-      <Grid.Row>
-        <Grid.Column>
+      <GridRow>
+        <GridColumn>
           <Menu
             stackable
             inverted
@@ -22,8 +22,8 @@ function Header() {
             color="blue"
             size="massive"
           />
-        </Grid.Column>
-      </Grid.Row>
+        </GridColumn>
+      </GridRow>
     </Grid>
   );
 }

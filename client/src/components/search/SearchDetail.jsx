@@ -1,18 +1,25 @@
 import React from 'react';
-import {
-  Grid,
-  List,
-  Header,
-  Button,
-  Icon,
-  Segment,
-  Label,
-  Table,
-  Dropdown,
-} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './SearchDetail.css';
+
+import Grid from '../atoms/Grid';
+import Segment from '../atoms/Segment';
+import Header from '../atoms/Header';
+import HeaderContent from '../atoms/HeaderContent';
+import Table from '../atoms/Table';
+import TableHeader from '../atoms/TableHeader';
+import TableHeaderCell from '../atoms/TableHeaderCell';
+import TableBody from '../atoms/TableBody';
+import TableRow from '../atoms/TableRow';
+import TableCell from '../atoms/TableCell';
+import ListItem from '../atoms/ListItem';
+import GridColumn from '../atoms/GridColumn';
+import GridRow from '../atoms/GridRow';
+import Button from '../atoms/Button';
+import Icon from '../atoms/Icon';
+import Label from '../atoms/Label';
+import Dropdown from '../atoms/Dropdown';
 
 const cx = classNames.bind(styles);
 const colorMap = {
@@ -72,11 +79,11 @@ function SearchDetail(props) {
               key={`${item.KeywordIndex}_${item.Project}_${item.Type}`}
               className={cx('contents')}
             >
-              <Grid.Row
+              <GridRow
                 className={cx('type')}
               >
-                <Grid.Column>
-                  <List.Item>
+                <GridColumn>
+                  <ListItem>
                     <Label
                       color={colorMap[item.Type]}
                       size="large"
@@ -85,37 +92,37 @@ function SearchDetail(props) {
                       { item.Type }
                     </Label>
                     { item.name }
-                  </List.Item>
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column>
+                  </ListItem>
+                </GridColumn>
+              </GridRow>
+              <GridRow>
+                <GridColumn>
                   <Segment className={cx('text')}>
                     <Table basic="very" celled>
-                      <Table.Header>
-                        <Table.Row>
-                          <Table.HeaderCell>Name</Table.HeaderCell>
-                          <Table.HeaderCell>{ item.KeywordIndex }</Table.HeaderCell>
-                        </Table.Row>
-                      </Table.Header>
-                      <Table.Body>
-                        <Table.Row>
-                          <Table.Cell collapsing>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHeaderCell>Name</TableHeaderCell>
+                          <TableHeaderCell>{ item.KeywordIndex }</TableHeaderCell>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        <TableRow>
+                          <TableCell collapsing>
                             <Header as="h5">
-                              <Header.Content>
+                              <HeaderContent>
                                 Location
-                              </Header.Content>
+                              </HeaderContent>
                             </Header>
-                          </Table.Cell>
-                          <Table.Cell>
+                          </TableCell>
+                          <TableCell>
                             { toPath(item.Path) }
-                          </Table.Cell>
-                        </Table.Row>
-                      </Table.Body>
+                          </TableCell>
+                        </TableRow>
+                      </TableBody>
                     </Table>
                   </Segment>
-                </Grid.Column>
-              </Grid.Row>
+                </GridColumn>
+              </GridRow>
             </div>
           ))
         }
@@ -124,10 +131,10 @@ function SearchDetail(props) {
   };
   return (
     <Grid columns={1}>
-      <Grid.Row
+      <GridRow
         className={cx('detail')}
       >
-        <Grid.Column
+        <GridColumn
           className={cx('back')}
         >
           <Button
@@ -137,14 +144,14 @@ function SearchDetail(props) {
             <Icon name="triangle left" />
           Back
           </Button>
-        </Grid.Column>
-        <Grid.Column>
+        </GridColumn>
+        <GridColumn>
           { renderProjectMenu(props.details) }
-        </Grid.Column>
-        <Grid.Column>
+        </GridColumn>
+        <GridColumn>
           { renderContents(props.details) }
-        </Grid.Column>
-      </Grid.Row>
+        </GridColumn>
+      </GridRow>
     </Grid>
   );
 }

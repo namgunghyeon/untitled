@@ -1,6 +1,9 @@
 import React from 'react';
-import { Input, Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import Grid from '../atoms/Grid';
+import GridRow from '../atoms/GridRow';
+import GridColumn from '../atoms/GridColumn';
+import Input from '../atoms/Input';
 
 const propTypes = {
   onHandelSearch: PropTypes.func.isRequired,
@@ -9,12 +12,12 @@ const propTypes = {
 function SearchBar(props) {
   return (
     <Grid columns={1}>
-      <Grid.Row
+      <GridRow
         style={{
           paddingTop: '2rem',
         }}
       >
-        <Grid.Column>
+        <GridColumn>
           <Input
             fluid
             type="text"
@@ -23,8 +26,8 @@ function SearchBar(props) {
             icon={{ name: 'search', circular: true, link: true }}
             onChange={props.onHandelSearch}
           />
-        </Grid.Column>
-      </Grid.Row>
+        </GridColumn>
+      </GridRow>
     </Grid>
   );
 }
