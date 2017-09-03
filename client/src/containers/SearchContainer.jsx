@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {
-  SearchBar,
-  SearchList,
-  SearchDetail,
-  Loading,
-} from '../components';
+
 import {
   SearchSelectors,
   SearchActions,
@@ -17,6 +12,11 @@ import {
   PageSelectors,
   PageActions,
 } from '../data/page';
+
+import Loading from '../components/molecules/Loading';
+import SearchBar from '../components/organisms/SearchBar';
+import SearchList from '../components/organisms/SearchList';
+import SearchDetail from '../components/organisms/SearchDetail';
 
 const LIMIT = 30;
 
